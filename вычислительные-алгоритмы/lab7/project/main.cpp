@@ -17,6 +17,7 @@ int main() {
     tree.insert('Y');
     tree.insert('Z');
 
+    tree.insert('a');
     // Print the tree
     tree.printTree();
 
@@ -36,6 +37,7 @@ int main() {
     std::cout << "In-order traversal after deletion: ";
     tree.traverse();
     std::cout << std::endl;
+
 
     return 0;
 }
