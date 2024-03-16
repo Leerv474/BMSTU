@@ -1,7 +1,6 @@
 #include <iostream>
 #include "bintree.h"
 
-
 int main() {
     BinTree tree;
 
@@ -15,7 +14,9 @@ int main() {
     tree.insert('E');
     tree.insert('X');
     tree.insert('Y');
+    tree.insert('A');
     tree.insert('Z');
+    tree.insert('h');
 
     tree.insert('a');
     // Print the tree

@@ -1,3 +1,0 @@
-/home/roman/Documents/BMSTU/вычислительные-алгоритмы/lab3/project/build/CMakeFiles/main.dir
-/home/roman/Documents/BMSTU/вычислительные-алгоритмы/lab3/project/build/CMakeFiles/edit_cache.dir
-/home/roman/Documents/BMSTU/вычислительные-алгоритмы/lab3/project/build/CMakeFiles/rebuild_cache.dir
