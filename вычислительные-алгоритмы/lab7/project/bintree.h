@@ -6,19 +6,18 @@ class BinTree {
 private:
     struct Node {
         char data;
-        Node *right = nullptr;
-        Node *left = nullptr;
-        Node *parent = nullptr;
+        Node* right = nullptr;
+        Node* left = nullptr;
+        Node* parent = nullptr;
         int side = -1;
 
-        Node(char data) {
-            this->data = data;
-        }
+        Node(char data) { this->data = data; }
     };
 
-    Node *root = nullptr;
+    Node* root = nullptr;
 
-    Node *searchNode(char data, Node *currentNode) {
+    Node* searchNode(char data, Node* currentNode)
+    {
         if (!currentNode) {
             std::cout << "not found\n";
             return nullptr;
@@ -32,7 +31,8 @@ private:
         return currentNode;
     }
 
-    void printTree(Node **level, int depth, int indent) {
+    void printTree(Node** level, int depth, int indent)
+    {
         int nullCNT = 0;
         std::string spacing = "";
         std::string smallSpacing = "";
@@ -58,16 +58,14 @@ private:
             std::cout << spacing;
         }
         std::cout << "\n\n";
-    
 
         if (nullCNT == depth) {
             return;
         }
 
-        
-        Node **newLevel = new Node*[depth * 2];
+        Node** newLevel = new Node*[depth * 2];
         int cnt = 0;
-        for (int i = 0; i < depth; i++){
+        for (int i = 0; i < depth; i++) {
             if (level[i] == nullptr) {
                 newLevel[cnt] = nullptr;
                 cnt++;
@@ -84,7 +82,8 @@ private:
         printTree(newLevel, depth * 2, indent / 2);
     }
 
-    int getHeight(Node* root) {
+    int getHeight(Node* root)
+    {
         if (root == nullptr) {
             return 0;
         }
@@ -97,18 +96,19 @@ private:
         return 1 + leftHeight;
     }
 
-    void traverse(Node* root) {
-        if (root == nullptr) return;
+    void traverse(Node* root)
+    {
+        if (root == nullptr)
+            return;
 
         traverse(root->left); // Traverse left subtree
-        std::cout << root->data<< " "; // Process current node
+        std::cout << root->data << " "; // Process current node
         traverse(root->right); // Traverse right subtree
     }
 
-
-    
 public:
-    void traverse() {
+    void traverse()
+    {
         if (!root) {
             std::cerr << "tree is empty\n";
             return;
@@ -116,7 +116,8 @@ public:
         traverse(root);
     }
 
-    Node *searchNode(const char data) {
+    Node* searchNode(const char data)
+    {
         if (root == nullptr) {
             std::cout << "Tree is empty\n";
             return nullptr;
@@ -124,13 +125,14 @@ public:
 
         return searchNode(data, root);
     }
-    void printTree() {
+    void printTree()
+    {
         if (root == nullptr) {
             std::cout << "Tree is empty\n";
             return;
         }
 
-        Node **level = new Node*[1];
+        Node** level = new Node*[1];
         level[0] = root;
 
         int indent = 1;
@@ -142,9 +144,9 @@ public:
         printTree(level, 1, indent + 1);
     }
 
-    
-    void deleteByData(char data) {
-        Node *nodeToDelete = searchNode(data);
+    void deleteByData(char data)
+    {
+        Node* nodeToDelete = searchNode(data);
 
         if (nodeToDelete == root && root->side == -1) {
             root = nullptr;
@@ -163,7 +165,7 @@ public:
         if (!nodeToDelete->right && !nodeToDelete->left) {
             if (nodeToDelete->side == 0) {
                 nodeToDelete->parent->left = nullptr;
-            } 
+            }
             if (nodeToDelete->side == 1) {
                 nodeToDelete->parent->right = nullptr;
             }
@@ -173,11 +175,10 @@ public:
             return;
         }
 
-
         if (nodeToDelete->right && !nodeToDelete->left) {
             if (nodeToDelete->side == 0) {
                 nodeToDelete->parent->left = nodeToDelete->right;
-            } 
+            }
             if (nodeToDelete->side == 1) {
                 nodeToDelete->parent->right = nodeToDelete->right;
             }
@@ -189,7 +190,7 @@ public:
         if (!nodeToDelete->right && nodeToDelete->left) {
             if (nodeToDelete->side == 0) {
                 nodeToDelete->parent->left = nodeToDelete->left;
-            } 
+            }
             if (nodeToDelete->side == 1) {
                 nodeToDelete->parent->right = nodeToDelete->left;
             }
@@ -198,7 +199,7 @@ public:
             return;
         }
 
-        Node *successor = nodeToDelete;
+        Node* successor = nodeToDelete;
         while (successor->left) {
             successor = successor->left;
         }
@@ -211,7 +212,7 @@ public:
             delete successor;
             return;
         }
-        
+
         nodeToDelete->data = successor->data;
         successor->data = successor->right->data;
         delete successor->right->right;
@@ -220,9 +221,8 @@ public:
         successor->right = nullptr;
     }
 
-
-
-    char getValue(Node *node) {
+    char getValue(Node* node)
+    {
         if (!node) {
             std::cout << "node is empty\n";
             return 0;
@@ -230,7 +230,8 @@ public:
         return node->data;
     }
 
-    Node *getLeft(Node *node) {
+    Node* getLeft(Node* node)
+    {
         if (!node) {
             std::cout << "node is empty\n";
             return nullptr;
@@ -241,7 +242,8 @@ public:
         return node->left;
     }
 
-    Node *getRight(Node *node) {
+    Node* getRight(Node* node)
+    {
         if (!node) {
             std::cout << "node is empty\n";
             return nullptr;
@@ -252,7 +254,8 @@ public:
         return node->right;
     }
 
-    Node *getFather(Node *node) {
+    Node* getFather(Node* node)
+    {
         if (!node) {
             std::cout << "node is empty\n";
             return nullptr;
@@ -263,7 +266,8 @@ public:
         return node->parent;
     }
 
-    Node *getSibling(Node *node) {
+    Node* getSibling(Node* node)
+    {
         if (!node) {
             std::cout << "node is empty\n";
             return nullptr;
@@ -284,23 +288,24 @@ public:
         return node->parent->left;
     }
 
-    bool isEmpty() {
+    bool isEmpty()
+    {
         if (root == nullptr) {
             return true;
         }
         return false;
     }
 
-
-    void insert(const char data) {
-        Node *newNode = new Node(data);
+    void insert(const char data)
+    {
+        Node* newNode = new Node(data);
         if (isEmpty()) {
             root = newNode;
             return;
         }
 
-        Node *temp = root;
-        while (true){
+        Node* temp = root;
+        while (true) {
             if (temp->data < data) {
                 if (temp->right == nullptr) {
                     temp->right = newNode;
@@ -321,6 +326,4 @@ public:
             temp = temp->left;
         }
     }
-
 };
-

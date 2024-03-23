@@ -1,7 +1,8 @@
-#include <iostream>
 #include "bintree.h"
+#include <iostream>
 
-int main() {
+int main()
+{
     BinTree tree;
 
     // Insert nodes into the tree
@@ -17,6 +18,7 @@ int main() {
     tree.insert('A');
     tree.insert('Z');
     tree.insert('h');
+    tree.insert('f');
 
     tree.insert('a');
     // Print the tree
@@ -39,7 +41,5 @@ int main() {
     tree.traverse();
     std::cout << std::endl;
 
-
     return 0;
 }
-
