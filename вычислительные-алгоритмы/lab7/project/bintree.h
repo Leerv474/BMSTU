@@ -44,9 +44,7 @@ private:
             smallSpacing += ' ';
         }
         std::cout << smallSpacing;
-        int twos = 0;
         for (int i = 0; i < depth; i++) {
-            twos++;
             if (level[i] == nullptr) {
                 nullCNT++;
                 std::cout << ' ';
@@ -141,7 +139,7 @@ public:
         for (int i = 0; i < height; i++) {
             indent *= 2;
         }
-        printTree(level, 1, indent + 1);
+        printTree(level, 1, indent);
     }
 
     void deleteByData(char data)
