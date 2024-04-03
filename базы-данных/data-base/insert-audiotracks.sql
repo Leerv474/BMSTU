@@ -1,10 +1,10 @@
 -- Insert albums for The Beatles
 INSERT INTO albums (name, release_date, number_of_tracks, genre_id, author_id) VALUES
 ('Abbey Road', '1969-09-26', 17, 1, 1),  -- The Beatles
-('A Night at the Opera', '1975-11-21', 12, 1, 2),  -- Queen
-('Nevermind', '1991-09-24', 12, 1, 3),  -- Nirvana
-('Parachutes', '2000-07-10', 10, 1, 4),  -- Coldplay
-('Map of the Soul: 7', '2020-02-21', 20, 1, 5);  -- BTS
+('A Night at the Opera', '1975-11-21', 12, 2, 2),  -- Queen
+('Nevermind', '1991-09-24', 12, 3, 3),  -- Nirvana
+('Parachutes', '2000-07-10', 10, 4, 4),  -- Coldplay
+('Map of the Soul: 7', '2020-02-21', 20, 5, 5);  -- BTS
 
 -- Insert audio tracks for The Beatles
 INSERT INTO audio_tracks (name, duration, release_date, genre_id, type_id, album_id) VALUES
