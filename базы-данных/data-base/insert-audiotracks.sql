@@ -47,7 +47,6 @@ INSERT INTO audio_tracks (name, duration, release_date, genre_id, type_id, album
 ('Boy with Luv', 229, '2020-02-21', 1, 1, 5);  -- BTS
 
 -- Link authors with the new tracks
-
 -- The Beatles' tracks
 INSERT INTO tracks_authors (track_id, author_id) VALUES
 (6, 1), -- Here Comes the Sun: The Beatles

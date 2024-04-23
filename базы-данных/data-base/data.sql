@@ -69,7 +69,9 @@ CREATE TABLE collections (
     id SERIAL PRIMARY KEY,
     name VARCHAR(80) DEFAULT 'unnamed',
     number_of_tracks INT NOT NULL,
-    total_duration INT NOT NULL
+    total_duration INT NOT NULL,
+    owner_id INT NOT NULL,
+    FOREIGN KEY (owner_id) REFERENCES users(id)
 );
 
 CREATE TABLE collections_tracks (
