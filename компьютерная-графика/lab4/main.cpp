@@ -248,8 +248,8 @@ void reshape(int w, int h) {
   // Set up the perspective projection
   float distanceToObject = 2000;
   float fov = 60.0f;                       // Field of view in degrees
-  float nearPlane = 100.0f;                // Near clipping plane distance
-  float farPlane = distanceToObject + 200; // Far clipping plane distance
+  float nearPlane = 1000.0f;                // Near clipping plane distance
+  float farPlane = distanceToObject + 2000; // Far clipping plane distance
 
   gluPerspective(fov, aspectRatio, nearPlane, farPlane);
   gluLookAt(0.0f, 0.0f, distanceToObject, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
