@@ -2,7 +2,6 @@
 #include <GL/freeglut.h>
 #include <GL/gl.h>
 #include <cmath>
-#include <iostream>
 const float PI = 3.14159265358979323846;
 double angle = 0;
 
@@ -148,7 +147,8 @@ public:
     glEnd();
     glPopMatrix();
   }
-  void drawHorizontalCylinder(float position[], float radius, float height, int segments) {
+  void drawHorizontalCylinder(float position[], float radius, float height,
+                              int segments) {
     glPushMatrix();
     glTranslatef(position[0], position[1], position[2]);
 
@@ -195,6 +195,7 @@ public:
     glPopMatrix();
   }
 
+
   void drawTrain() {
     drawCube(new double[]{300, 75, 900}, new double[]{100, -75, 50});
     drawCube(new double[]{500, 50, 1000}, new double[]{0, 0, 0});
@@ -202,18 +203,18 @@ public:
     drawCube(new double[]{400, 225, 400}, new double[]{50, 50, 250});
     drawHorizontalCylinder(new float[]{250, 150, 650}, 125, 200, 50);
     drawVerticalCylinder(new float[]{250, 275, 750}, 50, 150, 40);
-    drawHorizontalCylinder(new float[]{50, 50 ,950}, 30, 80, 20);
-    drawHorizontalCylinder(new float[]{450, 50 , 950}, 30, 80, 20);
-    drawVerticalCylinder(new float[]{50, 50 ,950}, 15, 80, 20);
-    drawVerticalCylinder(new float[]{450, 50 , 950}, 30, 80, 20);
-    drawHorizontalCylinder(new float[]{60, 150 ,950}, 50, 20, 20);
-    drawHorizontalCylinder(new float[]{440, 150 , 950}, 50, 20, 20);
-    drawWheel(new float[]{75,-60,200}, 75, 20, 20);
-    drawWheel(new float[]{400,-60,200}, 75, 20, 20);
-    drawWheel(new float[]{75,-60,400}, 75, 20, 20);
-    drawWheel(new float[]{400,-60,400}, 75, 20, 20);
-    drawWheel(new float[]{75,-60,800}, 75, 20, 20);
-    drawWheel(new float[]{400,-60,800}, 75, 20, 20);
+    drawHorizontalCylinder(new float[]{50, 50, 950}, 30, 80, 20);
+    drawHorizontalCylinder(new float[]{450, 50, 950}, 30, 80, 20);
+    drawVerticalCylinder(new float[]{50, 50, 950}, 15, 80, 20);
+    drawVerticalCylinder(new float[]{450, 50, 950}, 30, 80, 20);
+    drawHorizontalCylinder(new float[]{60, 150, 950}, 50, 20, 20);
+    drawHorizontalCylinder(new float[]{440, 150, 950}, 50, 20, 20);
+    drawWheel(new float[]{75, -60, 200}, 75, 20, 20);
+    drawWheel(new float[]{400, -60, 200}, 75, 20, 20);
+    drawWheel(new float[]{75, -60, 400}, 75, 20, 20);
+    drawWheel(new float[]{400, -60, 400}, 75, 20, 20);
+    drawWheel(new float[]{75, -60, 800}, 75, 20, 20);
+    drawWheel(new float[]{400, -60, 800}, 75, 20, 20);
   }
 } train;
 
@@ -247,7 +248,7 @@ void reshape(int w, int h) {
 
   // Set up the perspective projection
   float distanceToObject = 2000;
-  float fov = 60.0f;                       // Field of view in degrees
+  float fov = 60.0f;                        // Field of view in degrees
   float nearPlane = 1000.0f;                // Near clipping plane distance
   float farPlane = distanceToObject + 2000; // Far clipping plane distance
 
