@@ -219,64 +219,156 @@ public:
 } train;
 
 void init() {
-  glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-  glEnable(GL_DEPTH_TEST);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glEnable(GL_DEPTH_TEST);
+
+    // Установка света
+    glEnable(GL_LIGHTING);
+
+    // Источник света 1
+    GLfloat light_position1[] = { 100.0f, 100.0f, 100.0f, 1.0f };
+    GLfloat light_color1[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    glLightfv(GL_LIGHT0, GL_POSITION, light_position1);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, light_color1);
+    glEnable(GL_LIGHT0);
+
+    // Источник света 2
+    GLfloat light_position2[] = { -100.0f, 100.0f, 100.0f, 1.0f };
+    GLfloat light_color2[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    glLightfv(GL_LIGHT1, GL_POSITION, light_position2);
+    glLightfv(GL_LIGHT1, GL_DIFFUSE, light_color2);
+    glEnable(GL_LIGHT1);
+
+    // Источник света 3
+    GLfloat light_position3[] = { -100.0f, 100.0f, -100.0f, 1.0f };
+    GLfloat light_color3[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    glLightfv(GL_LIGHT2, GL_POSITION, light_position3);
+    glLightfv(GL_LIGHT2, GL_DIFFUSE, light_color3);
+    glEnable(GL_LIGHT2);
+
+    // Источник света 4
+    GLfloat light_position4[] = { 100.0f, 100.0f, -100.0f, 1.0f };
+    GLfloat light_color4[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    glLightfv(GL_LIGHT3, GL_POSITION, light_position4);
+    glLightfv(GL_LIGHT3, GL_DIFFUSE, light_color4);
+    glEnable(GL_LIGHT3);
+
+    // Источник света 5
+    GLfloat light_position5[] = { 0.0f, -100.0f, 0.0f, 1.0f };
+    GLfloat light_color5[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    glLightfv(GL_LIGHT4, GL_POSITION, light_position5);
+    glLightfv(GL_LIGHT4, GL_DIFFUSE, light_color5);
+    glEnable(GL_LIGHT4);
+}
+
+void menu(int value) {
+    switch (value) {
+    case 1:
+        glEnable(GL_LIGHT0);
+        break;
+    case 2:
+        glDisable(GL_LIGHT0);
+        break;
+    case 3:
+        glEnable(GL_LIGHT1);
+        break;
+    case 4:
+        glDisable(GL_LIGHT1);
+        break;
+    case 5:
+        glEnable(GL_LIGHT2);
+        break;
+    case 6:
+        glDisable(GL_LIGHT2);
+        break;
+    case 7:
+        glEnable(GL_LIGHT3);
+        break;
+    case 8:
+        glDisable(GL_LIGHT3);
+        break;
+    case 9:
+        glEnable(GL_LIGHT4);
+        break;
+    case 10:
+        glDisable(GL_LIGHT4);
+        break;
+    }
+    glutPostRedisplay();
+} // МЕНЮШКА
+
+void createMenu() {
+    int menu_id = glutCreateMenu(menu);
+    glutAddMenuEntry("Enable Light 1", 1);
+    glutAddMenuEntry("Disable Light 1", 2);
+    glutAddMenuEntry("Enable Light 2", 3);
+    glutAddMenuEntry("Disable Light 2", 4);
+    glutAddMenuEntry("Enable Light 3", 5);
+    glutAddMenuEntry("Disable Light 3", 6);
+    glutAddMenuEntry("Enable Light 4", 7);
+    glutAddMenuEntry("Disable Light 4", 8);
+    glutAddMenuEntry("Enable Light 5", 9);
+    glutAddMenuEntry("Disable Light 5", 10);
+    glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
 
 void display() {
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glLoadIdentity();
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glLoadIdentity();
 
-  glRotatef(angle, 0.0f, 1.0f, 0.0f);
-  // Set up the view
-  gluLookAt(5.0, 5.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-  train.drawTrain();
-  // Draw the train
-  glPushMatrix();
-  glColor3f(1.0, 0.0, 0.0);    // Red color
-  glTranslatef(0.0, 0.0, 0.0); // Translate to desired position
-  glPopMatrix();
+    glRotatef(angle, 0.0f, 1.0f, 0.0f);
+    // Set up the view
+    gluLookAt(5.0, 5.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+    train.drawTrain();
+    // Draw the train
+    glPushMatrix();
+    glColor3f(1.0, 0.0, 0.0);    // Red color
+    glTranslatef(0.0, 0.0, 0.0); // Translate to desired position
+    glPopMatrix();
 
-  glutSwapBuffers();
+    glutSwapBuffers();
 }
 
 void reshape(int w, int h) {
-  glViewport(0, 0, w, h);
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  float aspectRatio = (float)w / (float)h;
+    glViewport(0, 0, w, h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    float aspectRatio = (float)w / (float)h;
 
-  // Set up the perspective projection
-  float distanceToObject = 2000;
-  float fov = 60.0f;                        // Field of view in degrees
-  float nearPlane = 1000.0f;                // Near clipping plane distance
-  float farPlane = distanceToObject + 2000; // Far clipping plane distance
+    // Set up the perspective projection
+    float distanceToObject = 2000;
+    float fov = 60.0f;                        // Field of view in degrees
+    float nearPlane = 1000.0f;                // Near clipping plane distance
+    float farPlane = distanceToObject + 2000; // Far clipping plane distance
 
-  gluPerspective(fov, aspectRatio, nearPlane, farPlane);
-  gluLookAt(0.0f, 0.0f, distanceToObject, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
+    gluPerspective(fov, aspectRatio, nearPlane, farPlane);
+    gluLookAt(0.0f, 0.0f, distanceToObject, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 }
+
 void spinView(int key, int x, int y) {
-  switch (key) {
-  case GLUT_KEY_LEFT:
-    angle += 5.0f;
-    break;
-  case GLUT_KEY_RIGHT:
-    angle -= 5.0f;
-    break;
-  }
-  glutPostRedisplay(); // Mark the current window as needing to be redisplayed
+    switch (key) {
+    case GLUT_KEY_LEFT:
+        angle += 5.0f;
+        break;
+    case GLUT_KEY_RIGHT:
+        angle -= 5.0f;
+        break;
+    }
+    glutPostRedisplay(); // Mark the current window as needing to be redisplayed
 }
-int main(int argc, char **argv) {
-  glutInit(&argc, argv);
-  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-  glutInitWindowSize(100, 100);
-  glutCreateWindow("3D Train");
-  init();
-  glutDisplayFunc(display);
-  glutReshapeFunc(reshape);
-  glutSpecialFunc(spinView);
-  glutMainLoop();
-  return 0;
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+    glutInitWindowSize(100, 100);
+    glutCreateWindow("3D Train");
+    init();
+    createMenu();
+    glutDisplayFunc(display);
+    glutReshapeFunc(reshape);
+    glutSpecialFunc(spinView);
+    glutMainLoop();
+    return 0;
 }

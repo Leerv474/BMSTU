@@ -1,11 +1,15 @@
-const socket = io("http://localhost:3000");
 const messageContainer = document.getElementById("message-container");
 const messageForm = document.getElementById("send-container");
 const messageInput = document.getElementById("message-input");
 
 const username = prompt("What is your name?")
-appendMessage("You joined")
-socket.emit("new-user", username)
+try {
+  const response = await fetch("/new-user", {method: 'POST'});
+  const data = await response.json();
+  appendMessage("You joined")
+} catch (error) {
+  console.error("Error:", error);
+}
 
 socket.on("chat-message", (data) => {
   appendMessage(`${data.username}: ${data.message}`)
