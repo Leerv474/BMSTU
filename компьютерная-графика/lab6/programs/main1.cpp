@@ -23,15 +23,21 @@ GLubyte first[32] = {0xff, 0xff,
 GLubyte second[32] = {
     0x00, 0x00,
 
-    0x1, 0x80,
-    0x1, 0x80,
-    0x3,
-    0x3,
-    0x7,
-    0x1f,
-    0x7f,
-
-    0x00, 0x00,
+    0x0, 0x80,
+    0x0, 0x80,
+    0x1, 0xc0,
+    0x1, 0xc0,
+    0x1, 0xc0,
+    0x3, 0xe0,
+    0x1f, 0xfc,
+    0x7f, 0xff,
+    0x1f, 0xfc,
+    0x3, 0xe0,
+    0x1, 0xc0,
+    0x1, 0xc0,
+    0x1, 0xc0,
+    0x0, 0x80,
+    0x0, 0x80,
 };
 
 GLfloat randomValue() { return ((GLfloat)(rand() % 11)) * 0.1f; }
@@ -76,16 +82,16 @@ void RenderScene(void) {
   for (int i = 0; i < 15; i++) {
     if (i == 0 || i == 14) {
       glRasterPos2i(x - size / 2, y);
-      glBitmap(size, size, 0.0, 0.0, 0.0, 0.0, first);
+      glBitmap(size, size, 0.0, 0.0, 0.0, 0.0, second);
       y += size;
       continue;
     }
     filling(x, y, size, range);
     glColor3f(1.0f, 1.0f, 1.0f);
     glRasterPos2i(x - range / 2 - size, y);
-    glBitmap(size, size, 0.0, 0.0, 0.0, 0.0, first);
+    glBitmap(size, size, 0.0, 0.0, 0.0, 0.0, second);
     glRasterPos2i(x + range / 2, y);
-    glBitmap(size, size, 0.0, 0.0, 0.0, 0.0, first);
+    glBitmap(size, size, 0.0, 0.0, 0.0, 0.0, second);
     y += size;
     if (i < 7) {
       range += 2 * size;
