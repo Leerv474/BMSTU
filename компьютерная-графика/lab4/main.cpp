@@ -8,55 +8,75 @@ double angle = 0;
 class Train {
 private:
 public:
-  void drawCube(double sizes[], double position[]) {
+void drawCube(double sizes[], double position[]) {
     double baseX = sizes[0];
     double baseY = sizes[1];
     double baseZ = sizes[2];
 
-    glBegin(GL_TRIANGLE_FAN);
+    GLfloat mat_diffuse[] = { 0.8, 0.8, 0.8, 1.0 };
+    GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat mat_shininess[] = { 50.0 };
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, mat_specular);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, mat_shininess);
+
+    glBegin(GL_QUADS);
+    // Bottom face
+    glNormal3f(0.0f, -1.0f, 0.0f);
     glVertex3f(position[0], position[1], position[2]);
     glVertex3f(position[0], position[1], position[2] + baseZ);
     glVertex3f(position[0] + baseX, position[1], position[2] + baseZ);
     glVertex3f(position[0] + baseX, position[1], position[2]);
-    glVertex3f(position[0], position[1], position[2]);
 
-    glVertex3f(position[0], position[1], position[2]);
+    // Top face
+    glNormal3f(0.0f, 1.0f, 0.0f);
     glVertex3f(position[0], position[1] + baseY, position[2]);
-    glVertex3f(position[0], position[1] + baseY, position[2] + baseZ);
-    glVertex3f(position[0], position[1], position[2] + baseZ);
-    glVertex3f(position[0], position[1], position[2]);
-
-    glVertex3f(position[0], position[1], position[2]);
-    glVertex3f(position[0], position[1] + baseY, position[2]);
-    glVertex3f(position[0] + baseX, position[1] + baseY, position[2]);
-    glVertex3f(position[0] + baseX, position[1], position[2]);
-    glVertex3f(position[0], position[1], position[2]);
-
-    glVertex3f(position[0] + baseX, position[1], position[2]);
     glVertex3f(position[0] + baseX, position[1] + baseY, position[2]);
     glVertex3f(position[0] + baseX, position[1] + baseY, position[2] + baseZ);
-    glVertex3f(position[0] + baseX, position[1], position[2] + baseZ);
-    glVertex3f(position[0] + baseX, position[1], position[2]);
+    glVertex3f(position[0], position[1] + baseY, position[2] + baseZ);
 
+    // Front face
+    glNormal3f(0.0f, 0.0f, 1.0f);
     glVertex3f(position[0], position[1], position[2] + baseZ);
     glVertex3f(position[0], position[1] + baseY, position[2] + baseZ);
     glVertex3f(position[0] + baseX, position[1] + baseY, position[2] + baseZ);
     glVertex3f(position[0] + baseX, position[1], position[2] + baseZ);
-    glVertex3f(position[0], position[1], position[2] + baseZ);
 
-    glVertex3f(position[0], position[1] + baseY, position[2]);
-    glVertex3f(position[0], position[1] + baseY, position[2] + baseZ);
-    glVertex3f(position[0] + baseX, position[1] + baseY, position[2] + baseZ);
+    // Back face
+    glNormal3f(0.0f, 0.0f, -1.0f);
+    glVertex3f(position[0], position[1], position[2]);
+    glVertex3f(position[0] + baseX, position[1], position[2]);
     glVertex3f(position[0] + baseX, position[1] + baseY, position[2]);
     glVertex3f(position[0], position[1] + baseY, position[2]);
+
+    // Left face
+    glNormal3f(-1.0f, 0.0f, 0.0f);
+    glVertex3f(position[0], position[1], position[2]);
+    glVertex3f(position[0], position[1], position[2] + baseZ);
+    glVertex3f(position[0], position[1] + baseY, position[2] + baseZ);
+    glVertex3f(position[0], position[1] + baseY, position[2]);
+
+    // Right face
+    glNormal3f(1.0f, 0.0f, 0.0f);
+    glVertex3f(position[0] + baseX, position[1], position[2]);
+    glVertex3f(position[0] + baseX, position[1], position[2] + baseZ);
+    glVertex3f(position[0] + baseX, position[1] + baseY, position[2] + baseZ);
+    glVertex3f(position[0] + baseX, position[1] + baseY, position[2]);
 
     glEnd();
-  }
+}
 
   void drawVerticalCylinder(float position[], float radius, float height,
                             int segments) {
     glPushMatrix();
     glTranslatef(position[0], position[1], position[2]);
+
+    GLfloat mat_diffuse[] = {0.8, 0.8, 0.8, 1.0};  
+    GLfloat mat_specular[] = {1.0, 1.0, 1.0, 1.0}; 
+    GLfloat mat_shininess[] = {50.0};             
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
 
     glBegin(GL_QUAD_STRIP);
     for (int i = 0; i <= segments; ++i) {
@@ -65,12 +85,14 @@ public:
       float x = radius * cos(theta);
       float z = radius * sin(theta);
 
+      glNormal3f(x / radius, 0.0f, z / radius); 
       glVertex3f(x, 0.0f, z);
       glVertex3f(x, height, z);
     }
     glEnd();
 
     glBegin(GL_TRIANGLE_FAN);
+    glNormal3f(0.0f, -1.0f, 0.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);
     for (int i = 0; i <= segments; ++i) {
       float theta =
@@ -83,6 +105,7 @@ public:
     glEnd();
 
     glBegin(GL_TRIANGLE_FAN);
+    glNormal3f(0.0f, 1.0f, 0.0f); 
     glVertex3f(0.0f, height, 0.0f);
     for (int i = 0; i <= segments; ++i) {
       float theta =
@@ -100,6 +123,13 @@ public:
     glPushMatrix();
     glTranslatef(position[0], position[1], position[2]);
 
+    GLfloat mat_diffuse[] = {0.8, 0.8, 0.8, 1.0};
+    GLfloat mat_specular[] = {1.0, 1.0, 1.0, 1.0};
+    GLfloat mat_shininess[] = {50.0};
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
+
     glBegin(GL_QUAD_STRIP);
     for (int i = 0; i <= segments; ++i) {
       float theta =
@@ -107,12 +137,14 @@ public:
       float x = radius * cos(theta);
       float y = radius * sin(theta);
 
+      glNormal3f(0.0f, y, x);
       glVertex3f(0, y, x);
       glVertex3f(height, y, x);
     }
     glEnd();
 
     glBegin(GL_TRIANGLE_FAN);
+    glNormal3f(0.0f, 0.0f, -1.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);
     for (int i = 0; i <= segments; ++i) {
       float theta =
@@ -125,6 +157,7 @@ public:
     glEnd();
 
     glBegin(GL_TRIANGLE_FAN);
+    glNormal3f(0.0f, 0.0f, 1.0f);
     glVertex3f(0.0f, 0.0f, height);
     for (int i = 0; i <= segments; ++i) {
       float theta =
@@ -137,10 +170,18 @@ public:
     glEnd();
     glPopMatrix();
   }
+
   void drawHorizontalCylinder(float position[], float radius, float height,
                               int segments) {
     glPushMatrix();
     glTranslatef(position[0], position[1], position[2]);
+
+    GLfloat mat_diffuse[] = {0.8, 0.8, 0.8, 1.0};
+    GLfloat mat_specular[] = {1.0, 1.0, 1.0, 1.0};
+    GLfloat mat_shininess[] = {50.0};
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
 
     glBegin(GL_QUAD_STRIP);
     for (int i = 0; i <= segments; ++i) {
@@ -149,12 +190,14 @@ public:
       float x = radius * cos(theta);
       float y = radius * sin(theta);
 
+      glNormal3f(x / radius, y / radius, 0.0f);
       glVertex3f(x, y, 0.0f);
       glVertex3f(x, y, height);
     }
     glEnd();
 
     glBegin(GL_TRIANGLE_FAN);
+    glNormal3f(0.0f, 0.0f, -1.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);
     for (int i = 0; i <= segments; ++i) {
       float theta =
@@ -167,6 +210,7 @@ public:
     glEnd();
 
     glBegin(GL_TRIANGLE_FAN);
+    glNormal3f(0.0f, 0.0f, 1.0f);
     glVertex3f(0.0f, 0.0f, height);
     for (int i = 0; i <= segments; ++i) {
       float theta =
@@ -174,7 +218,6 @@ public:
       float x = radius * cos(theta);
       float y = radius * sin(theta);
 
-      // Top circle
       glVertex3f(x, y, height);
     }
     glEnd();
@@ -209,43 +252,33 @@ void init() {
 
   glEnable(GL_LIGHTING);
 
-  // Define light source 1 properties
   GLfloat light_position1[] = {1000.0f, 1000.0f, 1000.0f, 1.0f};
-  GLfloat light_diffuse1[] = {1.0f, 1.0f, 1.0f, 1.0f};
-  GLfloat light_ambient1[] = {1, 1,  1,
-                              1.0f}; // Increase ambient for overall brightness
-  GLfloat light_specular1[] = {1.0f, 1.0f, 1.0f,
-                               1.0f}; // Optional for specular highlights
+  GLfloat light_color1[] = {0.0f, 1.0f, 1.0f, 1.0f}; // cyan
 
-  // Set light source 1 parameters
   glLightfv(GL_LIGHT0, GL_POSITION, light_position1);
-  glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse1);
-  glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient1);
-  glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular1);
-
-  // Enable light source 1
+  glLightfv(GL_LIGHT0, GL_DIFFUSE, light_color1);
   glEnable(GL_LIGHT0);
 
-  GLfloat light_position2[] = {500.0f, 500.0f, 800.0f, 1.0f};
-  GLfloat light_color2[] = {1.0f, 1.0f, 1.0f, 1.0f};
+  GLfloat light_position2[] = {100.0f, 100.0f, 1000.0f, 1.0f};
+  GLfloat light_color2[] = {1.0f, 0.0f, 1.0f, 1.0f}; // pink
   glLightfv(GL_LIGHT1, GL_POSITION, light_position2);
   glLightfv(GL_LIGHT1, GL_DIFFUSE, light_color2);
   glEnable(GL_LIGHT1);
 
-  GLfloat light_position3[] = {-1000.0f, 1000.0f, -1000.0f, 1.0f};
-  GLfloat light_color3[] = {1.0f, 1.0f, 1.0f, 1.0f};
+  GLfloat light_position3[] = {200.0f, 300.0f, 1000.0f, 1.0f};
+  GLfloat light_color3[] = {1.0f, 1.0f, 0.0f, 1.0f}; // yellow-ish?
   glLightfv(GL_LIGHT2, GL_POSITION, light_position3);
   glLightfv(GL_LIGHT2, GL_DIFFUSE, light_color3);
   glEnable(GL_LIGHT2);
 
-  GLfloat light_position4[] = {1000.0f, 1000.0f, -1000.0f, 1.0f};
-  GLfloat light_color4[] = {1.0f, 1.0f, 1.0f, 1.0f};
+  GLfloat light_position4[] = {200.0f, 600.0f, 500.0f, 1.0f};
+  GLfloat light_color4[] = {0.5f, 0.5f, 1.0f, 1.0f}; // dark blue?
   glLightfv(GL_LIGHT3, GL_POSITION, light_position4);
   glLightfv(GL_LIGHT3, GL_DIFFUSE, light_color4);
   glEnable(GL_LIGHT3);
 
-  GLfloat light_position5[] = {0.0f, -1000.0f, 0.0f, 1.0f};
-  GLfloat light_color5[] = {1.0f, 1.0f, 1.0f, 1.0f};
+  GLfloat light_position5[] = {700.0f, 200.0f, 500.0f, 1.0f};
+  GLfloat light_color5[] = {1.0f, 1.0f, 1.0f, 1.0f}; // white 
   glLightfv(GL_LIGHT4, GL_POSITION, light_position5);
   glLightfv(GL_LIGHT4, GL_DIFFUSE, light_color5);
   glEnable(GL_LIGHT4);
@@ -309,11 +342,6 @@ void display() {
   glRotatef(angle, 0.0f, 1.0f, 1.0f);
   gluLookAt(5.0, 5.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
   train.drawTrain();
-  // train.drawCube(new double[]{100, 100, 100}, new double[]{500, 500, -400});
-  // train.drawCube(new double[]{100, 100, 100}, new double[]{500, 500, 1000});
-  glPushMatrix();
-  glTranslatef(0.0, 0.0, 0.0);
-  glPopMatrix();
 
   glutSwapBuffers();
 }
