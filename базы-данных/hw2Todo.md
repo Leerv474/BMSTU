@@ -1,2 +1,0 @@
-Запросы:
-LIKE, EXIST, BETWEEN

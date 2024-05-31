@@ -32,3 +32,18 @@ UPDATE third_year_students
 
 DELETE FROM third_year_students
     WHERE student_surname = 'Doe' and student_name = 'Jane';
+
+CREATE VIEW group_C as 
+    SELECT student_surname, student_name FROM students where student_group = 'C';
+
+UPDATE group_C
+    SET student_year = student_year + 1;
+
+create view age_22 as
+    SELECT student_surname, student_name from students where age = 22;
+
+UPDATE age_22
+    set age = age + 1;
+
+drop view age_22;
+    

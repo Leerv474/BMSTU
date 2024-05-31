@@ -25,3 +25,7 @@ select * from journal;
 ROLLBACK;
 select * from journal;
 
+BEGIN TRANSACTION;
+UPDATE journal
+    SET grade = 3 where grade = 1;
+COMMIT;
