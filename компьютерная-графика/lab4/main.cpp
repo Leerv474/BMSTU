@@ -254,33 +254,39 @@ void init() {
 
   GLfloat light_position1[] = {1000.0f, 1000.0f, 1000.0f, 1.0f};
   GLfloat light_color1[] = {0.0f, 1.0f, 1.0f, 1.0f}; // cyan
+  GLfloat matShininess[] = { 50.0f };
 
   glLightfv(GL_LIGHT0, GL_POSITION, light_position1);
   glLightfv(GL_LIGHT0, GL_DIFFUSE, light_color1);
+  glLightfv(GL_LIGHT0, GL_SHININESS, matShininess);
   glEnable(GL_LIGHT0);
 
   GLfloat light_position2[] = {100.0f, 100.0f, 1000.0f, 1.0f};
   GLfloat light_color2[] = {1.0f, 0.0f, 1.0f, 1.0f}; // pink
   glLightfv(GL_LIGHT1, GL_POSITION, light_position2);
   glLightfv(GL_LIGHT1, GL_DIFFUSE, light_color2);
+  glLightfv(GL_LIGHT1, GL_SHININESS, matShininess);
   glEnable(GL_LIGHT1);
 
   GLfloat light_position3[] = {200.0f, 300.0f, 1000.0f, 1.0f};
   GLfloat light_color3[] = {1.0f, 1.0f, 0.0f, 1.0f}; // yellow-ish?
   glLightfv(GL_LIGHT2, GL_POSITION, light_position3);
   glLightfv(GL_LIGHT2, GL_DIFFUSE, light_color3);
+  glLightfv(GL_LIGHT2, GL_SHININESS, matShininess);
   glEnable(GL_LIGHT2);
 
   GLfloat light_position4[] = {200.0f, 600.0f, 500.0f, 1.0f};
   GLfloat light_color4[] = {0.5f, 0.5f, 1.0f, 1.0f}; // dark blue?
   glLightfv(GL_LIGHT3, GL_POSITION, light_position4);
   glLightfv(GL_LIGHT3, GL_DIFFUSE, light_color4);
+  glLightfv(GL_LIGHT3, GL_SHININESS, matShininess);
   glEnable(GL_LIGHT3);
 
   GLfloat light_position5[] = {700.0f, 200.0f, 500.0f, 1.0f};
   GLfloat light_color5[] = {1.0f, 1.0f, 1.0f, 1.0f}; // white 
   glLightfv(GL_LIGHT4, GL_POSITION, light_position5);
   glLightfv(GL_LIGHT4, GL_DIFFUSE, light_color5);
+  glLightfv(GL_LIGHT4, GL_SHININESS, matShininess);
   glEnable(GL_LIGHT4);
 }
 
