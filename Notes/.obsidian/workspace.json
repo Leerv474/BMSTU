@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Схемотехника.md",
+                "file": "Excalidraw/лекция2.excalidraw.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Схемотехника.md",
+                "file": "Excalidraw/лекция2.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Схемотехника.md",
+                "file": "Excalidraw/лекция2.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Схемотехника.md"
+                "file": "Excalidraw/лекция2.excalidraw.md"
               }
             }
           }
@@ -148,11 +148,27 @@
   },
   "active": "ed2094b75a60de6f",
   "lastOpenFiles": [
-    "Untitled.md",
-    "TASM/Basics.md",
-    "TASM/Work with data.md",
-    "TASM/Прерывания.md",
+    "Excalidraw/лекция1.excalidraw.md",
+    "Excalidraw/дишифратор.excalidraw.md",
+    "Excalidraw/ДДЛиДТЛ.excalidraw.md",
+    "Excalidraw/MSDMS.excalidraw.md",
+    "Excalidraw/Drawing 2024-03-19 12.35.48.excalidraw.md",
+    "Excalidraw/Drawing 2024-03-05 13.35.11.excalidraw.md",
+    "Excalidraw/Drawing 2024-03-05 13.13.56.excalidraw.md",
     "Excalidraw/Drawing 2024-02-27 14.39.51.excalidraw.md",
-    "Схемотехника.md"
+    "Excalidraw/Drawing 2024-03-05 12.47.53.excalidraw.md",
+    "TASM/Registers.md",
+    "МоделиДанных.md",
+    "TASM/Процедуры.md",
+    "TASM/Прерывания.md",
+    "TASM/Ассемблерная вставка.md",
+    "TASM/Work with numbers.md",
+    "TASM/Work with data.md",
+    "TASM/Operators.md",
+    "TASM/Logical instructions.md",
+    "TASM/Bitwise operations.md",
+    "TASM/Basics.md",
+    "Схемотехника.md",
+    "Untitled.md"
   ]
 }
