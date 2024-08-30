@@ -17,3 +17,14 @@ BEGIN
     return result / amount;
 END;
 $$ language plpgsql;
+
+create or replace procedure promote_year()
+language sql
+as $$
+    begin;
+    update users
+        set role = "guest" where course = 4;
+    update users
+        set course = users.course + 1 where users.course <> 4;
+    select * from users;
+$$
