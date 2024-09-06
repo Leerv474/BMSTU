@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.root {
+  display: flex;
+  background: #313244;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  padding-top: 20px;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
+h2 {
+  background: #fab387;
+  border-radius: 10px;
+  color:#11111b; 
+  width: 500px;
+  text-align: center;
+  text-justify: center;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.weekday {
+  background: lightblue;
+  font-size: 20pt;
+  width: 450px;
+  color:#11111b; 
+  text-align: center;
+  text-justify: center;
+  border-radius: 10px;
+}
+
+.classes {
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.classLine {
+  display: grid;
+  grid-template-columns: 1fr 4fr 4fr 4fr 2fr;
+  width: 600px;
+  font-size: 14pt;
+  padding: 5px 10px 5px 10px;
+  color:#11111b; 
+  background: #b4befe;
+  flex-direction: row;
+  border: solid #1e1e2e 1px;
+  border-radius: 5px;
+  gap: 5px;
+}
+
+.classLine .classNumber {
+  grid-column: 1;
+  text-align: center;
+  align-content: center;
+  grid-row: 1 / span 2;
+}
+.classLine .className {
+  grid-column: 3 / span 3;
+}
+
+.classLine .classTime {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  text-align: center;
+  align-content: center;
+}
+.classLine .classTeacher {
+  grid-row: 2;
+  grid-column: 3 / span 2;
+}
+
+.classLine .classroom {
+  text-align: right;
+}
+
+.studentData {
+  display: flex;
+  justify-content: center;
+  background: #89b4fa;
+  border-radius: 5px;
+}
+
+.studentData .groupName, .studentData .subgroup {
+  background: none;
+  font-size: 12pt;
+  border: 1px solid #94e2d5;
+  border-radius: 5px;
+  margin: 5px;
+  text-align: center;
+}
+
+.submit {
+  width: 100%;
+  font-size: 14pt;
+  background:#a6e3a1; 
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+}
+
+.submit:hover {
+  cursor: pointer;
+}
