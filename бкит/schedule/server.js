@@ -1,69 +1,156 @@
-const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
-const cors = require('cors');
-const moment = require('moment');
-const path = require('path'); // Include path module for serving static files
+const express = require("express");
+const sqlite3 = require("sqlite3").verbose();
+const cors = require("cors");
+const moment = require("moment");
+const path = require("path");
 
 const app = express();
 const port = 3000;
 
-// Middleware to parse incoming JSON requests and handle CORS
 app.use(express.json());
 app.use(cors());
 
-// Serve static files (including index.html)
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname), { index: "home.html" }));
 
-// Connect to SQLite database
-const db = new sqlite3.Database('./schedule.db', (err) => {
-    if (err) {
-        console.error('Error connecting to the SQLite database:', err);
-    } else {
-        console.log('Connected to the SQLite database.');
-    }
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "home.html"));
 });
 
-// Get current day of the week
-const getCurrentWeekday = () => {
-    return moment().isoWeekday();
-};
+const db = new sqlite3.Database("./schedule.db", (err) => {
+  if (err) {
+    console.error("Error connecting to the SQLite database:", err);
+  } else {
+    console.log("Connected to the SQLite database.");
+  }
+});
 
-const getFirstWeekOfSeptember = () => {
-    const firstSeptember = moment().month(8).startOf('month'); // 8 = September (0-indexed)
-    const firstMonday = firstSeptember.isoWeekday(1); // 1 = Monday
-    if (firstMonday.month() !== 8) {
-        // If the first Monday is not in September, move to the next week
-        return firstMonday.add(1, 'week');
-    }
-    return firstMonday;
-};
+const getCurrentWeekday = () => moment().isoWeekday();
 
 const getCurrentWeekNumber = () => {
-    const firstWeekOfSeptember = getFirstWeekOfSeptember();
-    const currentWeek = moment();
-    
-    // Calculate the difference in weeks between now and the first week of September
-    const weekDiff = currentWeek.diff(firstWeekOfSeptember, 'weeks');
-    
-    // Determine if it's an odd or even week
-    const isEvenWeek = (weekDiff % 2) === 0;
-    
-    return isEvenWeek ? 0 : 1; // 0 for even weeks, 1 for odd weeks
+  const firstWeekOfSeptember = moment().month(8).startOf("month").isoWeekday(1);
+  const weekDiff = moment().diff(firstWeekOfSeptember, "weeks");
+  return weekDiff % 2 === 0 ? 2 : 1;
 };
-// API to get classes for the current day
-app.get('/classes/today', (req, res) => {
-    const today = getCurrentWeekday(); // Get today's weekday number
-    const currentWeekNumber = getCurrentWeekNumber();
-    db.all('SELECT * FROM classes WHERE weekday = ? and (week_number = 0 or week_number = ?)', [today, currentWeekNumber], (err, rows) => {
-        if (err) {
-            return res.status(500).json({ error: err.message });
-        }
-        res.json({ data: rows });
+
+app.post("/getSchedule", (req, res) => {
+  const { day, groupName, subgroup } = req.body;
+
+  if (!day || !groupName || isNaN(parseInt(subgroup))) {
+    return res.status(400).json({ error: "Invalid input." });
+  }
+
+  res.json({ success: true });
+});
+
+app.get("/classes/today", (req, res) => {
+  const today = getCurrentWeekday();
+  const currentWeekNumber = getCurrentWeekNumber();
+  const groupName = req.query.groupName;
+  const subgroup = parseInt(req.query.subgroup, 10);
+
+  if (isNaN(subgroup)) {
+    return res.status(400).json({ error: "Invalid subgroup value." });
+  }
+
+  db.all(
+    `SELECT * FROM classes 
+     WHERE weekday = ? 
+     AND (week_number = 0 OR week_number = ?) 
+     AND group_name = ? 
+     AND (subgroup = ? OR subgroup = 0)`,
+    [today, currentWeekNumber, groupName, subgroup],
+    (err, rows) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+      res.json({ weekday: today, data: rows });
+    },
+  );
+});
+
+app.get("/classes/tomorrow", (req, res) => {
+  const tomorrow = getCurrentWeekday() + 1;
+  if (tomorrow > 7) {
+    tomorrow = 1;
+  }
+  const currentWeekNumber = getCurrentWeekNumber();
+  const groupName = req.query.groupName;
+  const subgroup = parseInt(req.query.subgroup, 10);
+
+  if (isNaN(subgroup)) {
+    return res.status(400).json({ error: "Invalid subgroup value." });
+  }
+
+  db.all(
+    `SELECT * FROM classes 
+     WHERE weekday = ? 
+     AND (week_number = 0 OR week_number = ?) 
+     AND group_name = ? 
+     AND (subgroup = ? OR subgroup = 0)`,
+    [tomorrow, currentWeekNumber, groupName, subgroup],
+    (err, rows) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+      res.json({ weekday: tomorrow, data: rows });
+    },
+  );
+});
+
+// Helper function to calculate the full week's schedule
+function getWeekSchedule(weekNumber, groupName, subgroup, res) {
+  const query = `
+    SELECT * FROM classes 
+    WHERE (week_number = 0 OR week_number = ?) 
+    AND group_name = ? 
+    AND (subgroup = ? OR subgroup = 0)`;
+
+  db.all(query, [weekNumber, groupName, subgroup], (err, rows) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+
+    const weekSchedule = [[], [], [], [], [], [], []]; // One array for each weekday (Mon-Sun)
+
+    // Distribute the rows into respective weekdays (1=Monday, 7=Sunday)
+    rows.forEach((row) => {
+      weekSchedule[row.weekday - 1].push(row);
     });
+    // Sort each day's classes by class_number
+    weekSchedule.forEach((daySchedule) => {
+      daySchedule.sort((a, b) => a.class_number - b.class_number);
+    });
+
+    res.json({ weekNumber, data: weekSchedule });
+  });
+}
+
+// Route for current week's schedule
+app.get("/weekSchedule/currentWeek", (req, res) => {
+  const currentWeekNumber = getCurrentWeekNumber();
+  const groupName = req.query.groupName;
+  const subgroup = parseInt(req.query.subgroup, 10);
+
+  if (isNaN(subgroup)) {
+    return res.status(400).json({ error: "Invalid subgroup value." });
+  }
+
+  getWeekSchedule(currentWeekNumber, groupName, subgroup, res);
 });
 
-// Start the server
+// Route for next week's schedule
+app.get("/weekSchedule/nextWeek", (req, res) => {
+  const nextWeekNumber = getCurrentWeekNumber() + 1;
+  const groupName = req.query.groupName;
+  const subgroup = parseInt(req.query.subgroup, 10);
+
+  if (isNaN(subgroup)) {
+    return res.status(400).json({ error: "Invalid subgroup value." });
+  }
+
+  getWeekSchedule(nextWeekNumber, groupName, subgroup, res);
+});
+
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
-

@@ -4,7 +4,19 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: max-content; /* Make sure html and body take full viewport height */
+  margin: 0; /* Remove default margin */
+  width: 100%; /* Ensure full width */
+}
+
+body {
+  display: flex; /* Use flexbox for body */
+  flex-direction: column; /* Column direction to stretch child elements */
+}
 .root {
+  flex: 1;
   display: flex;
   background: #313244;
   flex-direction: column;
@@ -12,17 +24,13 @@
   align-content: center;
   padding-top: 20px;
   height: 100%;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top: 0;
+  min-height: 100vh;
 }
 
 h2 {
   background: #fab387;
   border-radius: 10px;
-  color:#11111b; 
+  color: #11111b;
   width: 500px;
   text-align: center;
   text-justify: center;
@@ -31,10 +39,10 @@ h2 {
 }
 
 .weekday {
-  background: lightblue;
+  background: #74c7ec;
   font-size: 20pt;
   width: 450px;
-  color:#11111b; 
+  color: #11111b;
   text-align: center;
   text-justify: center;
   border-radius: 10px;
@@ -42,17 +50,16 @@ h2 {
 
 .classes {
   border-radius: 10px;
-  border: 1px solid black;
   padding: 10px;
 }
 
 .classLine {
   display: grid;
-  grid-template-columns: 1fr 4fr 4fr 4fr 2fr;
+  grid-template-columns: 1fr 4fr 4fr 4fr 3fr;
   width: 600px;
   font-size: 14pt;
   padding: 5px 10px 5px 10px;
-  color:#11111b; 
+  color: #11111b;
   background: #b4befe;
   flex-direction: row;
   border: solid #1e1e2e 1px;
@@ -92,7 +99,8 @@ h2 {
   border-radius: 5px;
 }
 
-.studentData .groupName, .studentData .subgroup {
+.studentData .groupName,
+.studentData .subgroup {
   background: none;
   font-size: 12pt;
   border: 1px solid #94e2d5;
@@ -101,15 +109,76 @@ h2 {
   text-align: center;
 }
 
-.submit {
+.buttonBox {
+  width: 450px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.submit:hover,
+.button:hover,
+.reset:hover,
+.weekButton:hover,
+.nextWeekButton:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.submit,
+.button,
+.reset,
+.weekButton,
+.nextWeekButton {
   width: 100%;
   font-size: 14pt;
-  background:#a6e3a1; 
   height: 35px;
   border: none;
   border-radius: 5px;
 }
 
-.submit:hover {
-  cursor: pointer;
+.submit {
+  background: #a6e3a1;
+}
+
+.button {
+  background: #f9e2af;
+}
+
+.reset {
+  background: #eba0ac;
+}
+
+.message {
+  font-size: 14pt;
+  color: #f5e0dc;
+  padding: 100px;
+}
+
+.weekButton {
+  background: #89dceb;
+}
+
+.nextWeekButton {
+  background: #cba6f7;
+}
+
+.days {
+  margin: 10px;
+}
+
+.days .weekday {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.weekName {
+  background: #89b4fa;
+  font-size: 20pt;
+  width: 450px;
+  color: #11111b;
+  text-align: center;
+  text-justify: center;
+  border-radius: 10px;
 }

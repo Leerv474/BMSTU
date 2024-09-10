@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title id="pageTitle">Class Schedule</title>
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="root">
+      <h2>Расписание КФ МГТУ</h2>
+      <div class="weekName" id="weekName">Week</div>
+      <div class="buttonBox">
+        <button id="getToday" class="submit" type="submit">
+          Расписание на сегодня
+        </button>
+        <button id="getTomorrow" class="button" type="button">
+          Расписание на завтра
+        </button>
+        <button id="getWeekSchedule" class="weekButton" type="button">
+          Расписание на неделю
+        </button>
+        <button id="getNextWeekSchedule" class="nextWeekButton" type="button">
+          Расписание следующую на неделю
+        </button>
+        <button id="goBack" class="reset" type="button">Назад</button>
+      </div>
+      <div class="days" id="days">
+        <div class="classes"></div>
+      </div>
+    </div>
+  </body>
+  <script src="index.js"></script>
+</html>
