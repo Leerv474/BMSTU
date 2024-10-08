@@ -2,7 +2,7 @@ package org.bmstu.dao;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.bmstu.financeManagement.TransactionManager;
+import org.bmstu.model.TransactionModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,15 +14,15 @@ public class JsonParser {
 
     public static void updateExpensesData(double expenses) {
         try {
-            List<TransactionManager> expensesList = new ArrayList<>();
+            List<TransactionModel> expensesList = new ArrayList<>();
             String oldExpensesData = FILE_MANGER.readExpensesRecord();
             JsonNode arrayNode = MAPPER.readTree(String.valueOf(oldExpensesData));
             if (arrayNode.isArray()) {
                 for (JsonNode node : arrayNode) {
-                    expensesList.add(new TransactionManager(node.get("transactionSum").asDouble(), node.get("recordDate").asText(), "Расход"));
+                    expensesList.add(new TransactionModel(node.get("transactionSum").asDouble(), node.get("recordDate").asText(), "Расход"));
                 }
             }
-            expensesList.add(new TransactionManager(expenses));
+            expensesList.add(new TransactionModel(expenses));
 
             String newExpensesData = MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(expensesList);
             FILE_MANGER.saveExpensesRecord(newExpensesData);
@@ -34,15 +34,15 @@ public class JsonParser {
 
     public static void updateIncomeData(double income) {
         try {
-            List<TransactionManager> incomeList = new ArrayList<>();
+            List<TransactionModel> incomeList = new ArrayList<>();
             String oldIncomeData = FILE_MANGER.readIncomeRecord();
             JsonNode arrayNode = MAPPER.readTree(String.valueOf(oldIncomeData));
             if (arrayNode.isArray()) {
                 for (JsonNode node : arrayNode) {
-                    incomeList.add(new TransactionManager(node.get("transactionSum").asDouble(), node.get("recordDate").asText(), "Доход"));
+                    incomeList.add(new TransactionModel(node.get("transactionSum").asDouble(), node.get("recordDate").asText(), "Доход"));
                 }
             }
-            incomeList.add(new TransactionManager(income));
+            incomeList.add(new TransactionModel(income));
 
             FILE_MANGER.saveIncomeRecord(MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(incomeList));
 
@@ -51,14 +51,14 @@ public class JsonParser {
         }
     }
 
-    public static List<TransactionManager> getTransactionHistory() {
+    public static List<TransactionModel> getTransactionHistory() {
         try {
-            List<TransactionManager> transactionList = new ArrayList<>();
+            List<TransactionModel> transactionList = new ArrayList<>();
             String incomeData = FILE_MANGER.readIncomeRecord();
             JsonNode arrayNode = MAPPER.readTree(String.valueOf(incomeData));
             if (arrayNode.isArray()) {
                 for (JsonNode node : arrayNode) {
-                    transactionList.add(new TransactionManager(node.get("transactionSum").asDouble(), node.get("recordDate").asText(), "Доход"));
+                    transactionList.add(new TransactionModel(node.get("transactionSum").asDouble(), node.get("recordDate").asText(), "Доход"));
                 }
             }
 
@@ -66,7 +66,7 @@ public class JsonParser {
             arrayNode = MAPPER.readTree(String.valueOf(expensesData));
             if (arrayNode.isArray()) {
                 for (JsonNode node : arrayNode) {
-                    transactionList.add(new TransactionManager(node.get("transactionSum").asDouble(), node.get("recordDate").asText(), "Расход"));
+                    transactionList.add(new TransactionModel(node.get("transactionSum").asDouble(), node.get("recordDate").asText(), "Расход"));
                 }
             }
             return transactionList;

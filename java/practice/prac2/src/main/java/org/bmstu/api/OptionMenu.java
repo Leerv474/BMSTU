@@ -1,7 +1,7 @@
 package org.bmstu.api;
 
 import org.bmstu.dao.JsonParser;
-import org.bmstu.financeManagement.TransactionManager;
+import org.bmstu.model.TransactionModel;
 
 import java.util.Comparator;
 import java.util.InputMismatchException;
@@ -79,12 +79,12 @@ public class OptionMenu {
     private static void paymentHistory() {
         System.out.println("---История расходов---");
 
-        List<TransactionManager> transactionList = JsonParser.getTransactionHistory();
+        List<TransactionModel> transactionList = JsonParser.getTransactionHistory();
         if (transactionList == null) {
             System.out.println("Записи отсутствуют");
             return;
         }
-        transactionList.sort(Comparator.comparing(TransactionManager::getRecordDate));
+        transactionList.sort(Comparator.comparing(TransactionModel::getRecordDate));
         transactionList.forEach(item -> System.out.printf("- %s %s: %f\n", item.getTransactionType(), item.getRecordDate(), item.getTransactionSum()));
         System.out.println();
     }

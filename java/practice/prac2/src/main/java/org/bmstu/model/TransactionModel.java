@@ -1,22 +1,22 @@
-package org.bmstu.financeManagement;
+package org.bmstu.model;
 
 import java.time.LocalDate;
 
-public class TransactionManager {
+public class TransactionModel {
     private LocalDate recordDate;
     private double transactionSum;
     private String transactionType;
 
-    public TransactionManager(double transactionSum, String recordDate, String transactionType) {
+    public TransactionModel(double transactionSum, String recordDate, String transactionType) {
         this.transactionSum = transactionSum;
         this.recordDate = LocalDate.parse(recordDate);
         this.transactionType = transactionType;
     }
-    public TransactionManager(double transactionSum, String recordDate) {
+    public TransactionModel(double transactionSum, String recordDate) {
         this.transactionSum = transactionSum;
         this.recordDate = LocalDate.parse(recordDate);
     }
-    public TransactionManager(double transactionSum) {
+    public TransactionModel(double transactionSum) {
         this.transactionSum = transactionSum;
         this.recordDate = LocalDate.now();
     }
