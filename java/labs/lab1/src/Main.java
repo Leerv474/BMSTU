@@ -2,7 +2,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        task1();
+        task2();
+        task3();
+        task4();
     }
 
     public static void task1() {
@@ -12,23 +15,23 @@ public class Main {
         int d = 40;
 
         if (a > 5 && b < 25) {
-            System.out.println("a больше 5 и b меньше 25");
+            System.out.println("a > 5 && b < 25");
         } else if (a > 15 || b == 20) {
-            System.out.println("a больше 15 или b равно 20");
+            System.out.println("a > 15 || b == 20");
         } else {
-            System.out.println("Ни одно из условий не выполнено");
+            System.out.println("false");
         }
 
         if (a > 5 && b < 25 && c == 30) {
-            System.out.println("a больше 5, b меньше 25 и c равно 30");
+            System.out.println("true");
         } else {
-            System.out.println("Условие с тремя операндами не выполнено");
+            System.out.println("false");
         }
 
         if ((a > 5 && b < 25) || (c == 30 && d > 35)) {
-            System.out.println("Либо первое условие, либо второе условие выполнено");
+            System.out.println("true");
         } else {
-            System.out.println("Ни одно из сложных условий не выполнено");
+            System.out.println("false");
         }
 
         int day = 3;
@@ -54,7 +57,7 @@ public class Main {
                 break;
         }
 
-        String result = (a > b) ? "a больше b" : "a меньше или равно b";
+        String result = (a > b) ? "a > b" : "a <= b";
         System.out.println(result);
     }
 
@@ -111,21 +114,21 @@ public class Main {
         try {
             int intFromNull = nullInteger;
         } catch (NullPointerException e) {
-            System.out.println("NullPointerException пойман при попытке выполнить unboxing для null объекта!");
+            e.printStackTrace();
         }
     }
 
     public static void task4() {
-        String str = "Жизнь прекрасная";
+        String str = "Жизнь прекрасна";
 
         String replacedStr = str.replace("Жизнь", "Любовь");
         System.out.println("После замены: " + replacedStr);
 
         String trimmedStr = str.trim();
-        System.out.println("После обрезки: " + trimmedStr);
+        System.out.println("trim: " + trimmedStr);
 
         String[] parts = str.trim().split(" ");
-        System.out.println("После разбиения:");
+        System.out.println("split: ");
         for (String part : parts) {
             System.out.println(part);
         }
@@ -147,9 +150,9 @@ public class Main {
         sb.append("Hello");
         sb.append(" ");
         sb.append("World");
-        System.out.println("После конкатенации: " + sb.toString());
+        System.out.println("append" + sb.toString());
 
         sb.delete(5, sb.length());
-        System.out.println("После обрезки: " + sb.toString());
+        System.out.println("delete:" + sb.toString());
     }
 }
