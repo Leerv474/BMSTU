@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# изменять имена файлов с верхнего на нижний и наоборот
 directory=${1:-$(pwd)}
 
 for file in "$directory"/*; do
@@ -7,7 +8,8 @@ for file in "$directory"/*; do
     
     if [[ "$file_name" =~ [A-Z] ]]; then
         new_name=$(echo "$file_name" | tr 'A-Z' 'a-z')
-    else
+    fi
+    if [[ "$file_name" =~ [a-z] ]]; then
         new_name=$(echo "$file_name" | tr 'a-z' 'A-Z')
     fi
     
