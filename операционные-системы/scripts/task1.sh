@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $(whoami) == "fadeyjo" || $(whoami) == "root" ]]; then
+if [[ $(whoami) == "roman" || $(whoami) == "root" ]]; then
     echo "ТЫ ДУРАК?!?!??!?!?"
     exit 1
 fi
@@ -26,6 +26,10 @@ if [[ $2 == "*" && $3 == "-" ]]; then
             continue
         fi
 
+        if [[ $(stat --format=%s $file) -eq 0 ]]; then
+            continue
+        fi
+
         is_excluded="false"
         for excluded_file in "${excluded_files[@]}"; do
             if [[ ${excluded_file} == $(basename ${file}) ]]; then
@@ -40,6 +44,10 @@ if [[ $2 == "*" && $3 == "-" ]]; then
     echo "Все файлы удалены."
 elif [[ "${#}" -eq 2 && -f $2 ]]; then
     if [[ "${1}" != "${2}" ]]; then
+
+        if [[ $(stat --format=%s $file) -eq 0 ]]; then
+            continue
+        fi
         echo "Удаление файла ${2}..."
         rm -f "${2}"
         echo "Файл ${2} удалён."
