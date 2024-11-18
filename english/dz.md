@@ -1,4 +1,5 @@
-# CrowdStrike outage explained: What caused it and what’s next
+# CrowdStrike outage explained: What caused it and what’s next.
+
 A CrowdStrike update caused a massive IT outage, crashing millions of Windows systems. Critical services and business operations were disrupted, revealing tech reliance risks.
 
 What might be considered the largest IT outage in history was triggered by a botched software update from security vendor CrowdStrike, affecting millions of Windows systems around the world. Insurers estimate the outage will cost U.S. Fortune 500 companies $5.4 billion.
@@ -23,7 +24,7 @@ The flawed update was contained in a file that CrowdStrike refers to as "channel
 
 With channel file 291, CrowdStrike inadvertently introduced a logic error, causing the Falcon sensor to crash and, subsequently, Windows systems in which it was integrated.
 
-The flaw isn't in all versions of channel file 291. The problematic version is channel file 291 (C-00000291*.sys) with timestamp 2024-07-19 0409 UTC. Channel file 291 timestamped 2024-07-19 0527 UTC or later does not have the logic flaw. By that time, CrowdStrike had noticed its error and reverted the change. But, for many of its users, that reversion came too late as they had already updated, leading to BSOD and inoperable systems.
+The flaw isn't in all versions of channel file 291. The problematic version is channel file 291 (C-00000291\*.sys) with timestamp 2024-07-19 0409 UTC. Channel file 291 timestamped 2024-07-19 0527 UTC or later does not have the logic flaw. By that time, CrowdStrike had noticed its error and reverted the change. But, for many of its users, that reversion came too late as they had already updated, leading to BSOD and inoperable systems.
 
 In terms of how the logic error was introduced into the Falcon sensor, the issue was a failure in the CrowdStrike development process. On July 24, 2024, the company issued a preliminary Post Incident Review (PIR). According to the PIR, there was a flaw in CrowdStrike's Content Validator component, used to check the integrity of rapid response content update. That flaw enabled the faulty version of channel file 291 to pass validation, even though it had an error.
 
@@ -37,11 +38,10 @@ During the hearing, Adam Meyers, senior vice president of counter adversary oper
 
 During his testimony, Meyers detailed how CrowdStrike has changed its content update procedures to prevent similar incidents in the future:
 
-    Updates are now treated like code updates, with internal testing and phased implementation.
-    A new "system of concentric rings" approach for rolling out updates has been implemented.
-    Customers can now choose their level of update adoption: early adopter, general availability or opt-out/delay.
+> Updates are now treated like code updates, with internal testing and phased implementation.
+> A new "system of rings" approach for rolling out updates has been implemented.
+> Customers can now choose their level of update adoption: early adopter, general availability or opt-out/delay.
 
-CrowdStrike timeline
 ## What services were affected?
 
 Microsoft estimated that approximately 8.5 million Windows devices were directly affected by the CrowdStrike logic error flaw. That's less than 1% of Microsoft's global Windows install base.
@@ -63,12 +63,10 @@ Hospitals and healthcare clinics around the world faced significant disruptions 
 ### Financial services
 
 Online banking systems and financial institutions around the world were affected by the outage. Multiple payment platforms were directly affected, and there were individuals who did not get their paychecks when expected.
+
 ### Media and broadcasting
 
 Multiple media and broadcast outlets around the world, including British broadcaster Sky News, were taken off the air by the outage.
-Analysis of the CrowdStrike outage
-
-In this podcast, TechTarget Security editors Rob Wright, Alex Culafi and Arielle Waldman assess last week's CrowdStrike outage and the organization's response.
 
 ## Legal fallout
 
@@ -80,7 +78,7 @@ The lawsuit alleges CrowdStrike made false and misleading statements about the a
 
 ### Delta Air Lines lawsuit
 
-Delta Air Lines filed a lawsuit against CrowdStrike on Oct. 25, 2024, over the outage that grounded thousands of flights and cost the airline approximately $500 million. Delta accuses the cybersecurity firm of negligence and causing a catastrophe. While Delta was not the only airline affected by this global IT outage, it was slower than other airlines to recover. 
+Delta Air Lines filed a lawsuit against CrowdStrike on Oct. 25, 2024, over the outage that grounded thousands of flights and cost the airline approximately $500 million. Delta accuses the cybersecurity firm of negligence and causing a catastrophe. While Delta was not the only airline affected by this global IT outage, it was slower than other airlines to recover.
 
 In response to this lawsuit, CrowdStrike sued Delta, saying they were not responsible for the mass flight cancellations. In the suit, CrowdStrike said any damages Delta suffered after the outage was primarily the result of "Delta's own negligence."
 
@@ -93,17 +91,6 @@ But the July outage only affected Microsoft Windows. The root cause of the outag
 The way that the Falcon sensor integrates as a Windows kernel process is also not the same in macOS or Linux. Those OSes have different integration points to limit potential risk.
 
 However, there was a reported incident in June from Linux vendor Red Hat, where the Falcon sensor -- running as an eBPF program in Linux -- triggered a kernel panic. In Linux, a kernel panic is a type of crash, though typically not as dramatic as BSOD. That issue was resolved without Red Hat reporting any major incidents.
-The dangers of putting all your eggs in one IT basket
-
-Discover the possible consequences of relying on a concentrated and interconnected pool of vendors for all your infrastructure needs.
-
-What the Delta-Crowdstrike lawsuit may mean for IT contracts
-
-What happens when the IT infrastructure is too big to fail?
-
-CrowdStrike chaos shows risks of concentrated big IT
-
-CrowdStrike disaster exposes a hard truth about IT
 
 ## How long will it take businesses to recover from this outage?
 
@@ -114,13 +101,6 @@ IT administrators had to manually boot affected systems into Safe Mode or the Wi
 Some businesses were able to apply the fix within a few days. However, the process was not straightforward for all, particularly those with extensive IT infrastructure and encrypted drives. The use of the Microsoft Windows BitLocker encryption technology by some organizations made it significantly more time-consuming to recover as BitLocker recovery keys were required.
 
 It was initially estimated that it could potentially take months for some organizations to entirely recover all affected systems from the outage. As of July 29, 2024, CrowdStrike reported that approximately 99% of affected Windows sensors were back online.
-The latest news on CrowdStrike's recovery efforts
-
-BitLocker workaround may offer aid for CrowdStrike customers
-
-CrowdStrike: 97% of Windows sensors back online after outage
-
-CrowdStrike outage underscores software testing dilemmas
 
 ## Hackers take advantage of outage
 
@@ -128,26 +108,10 @@ While the outage was not due to a cyberattack, threat actors have taken advantag
 
 According to a blog post from CrowdStrike, the security vendor has received reports of the following malicious activity:
 
-    Phishing emails sent to customers posing as CrowdStrike support.
-    Fake phone calls impersonating CrowdStrike staff.
-    Selling scripts claiming to automate recovery from the botched update.
-    Posing as independent researchers saying the outage was due to a cyberattack and offering remediation insights.
+Phishing emails sent to customers posing as CrowdStrike support. Fake phone calls impersonating CrowdStrike staff. Selling scripts claiming to automate recovery from the botched update. Posing as independent researchers saying the outage was due to a cyberattack and offering remediation insights.
 
 CISA urges individuals and organizations to only follow instructions from legitimate sources and avoid opening suspicious emails and links.
 
 ## How can businesses be better prepared for tech outages?
 
 The CrowdStrike Windows outage highlighted the vulnerabilities of modern society's heavy reliance on technology. While system backups and automated processes are essential, having manual procedures in place can significantly enhance business continuity during tech outages.
-
-But there are a few things businesses can do to be better prepared for tech outages, including the following.
-
-### Test all updates before deploying to production
-
-It has been a best practice for years to allow automated updates to ensure systems are always up to date. However, the CrowdStrike issue laid bare the underlying risk with that approach. For mission-critical systems, testing updates before deployment or having some form of staging environment before pushing updates to production might help to mitigate some risk.
-### Develop and document manual workarounds
-
-Manual workarounds ensure critical business processes can continue even when technology fails. This approach was common before the digital age and, in the event of outage, can serve as a fallback. Documenting and practicing manual procedures can help mitigate the effect of outages, ensuring businesses can still operate and serve their customers, even during an outage.
-
-### Perform disaster recovery and business continuity planning
-
-Outages happen for any number of different reasons. Having extensive disaster recovery and business continuity practices and plans in place is critical. Part of that effort should include the use of redundant systems and infrastructure to minimize downtime and ensure critical functions can switch to backup systems when needed.
