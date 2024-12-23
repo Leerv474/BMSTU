@@ -8,7 +8,6 @@ public class RestaurantOrderProcessing {
     private static final Map<String, Integer> ingredientStock = new ConcurrentHashMap<>();
 
     static {
-        // Инициализация склада ингредиентов
         ingredientStock.put("Burger", 10);
         ingredientStock.put("Pizza", 5);
         ingredientStock.put("Pasta", 8);
@@ -65,7 +64,7 @@ public class RestaurantOrderProcessing {
     private Order calculatePrice(Order order) {
         double finalPrice = order.getPrice();
         if (finalPrice > 500) {
-            finalPrice *= 0.9; // Применяем скидку 10%
+            finalPrice *= 0.9;
         }
         order.setFinalPrice(finalPrice);
         System.out.println("Final price for " + order.getDishName() + ": " + finalPrice);

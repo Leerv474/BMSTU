@@ -5,26 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6ba32de-2476-4c47-9af3-61a83bba69ac" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/file1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/file2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/file3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bmstu/prac/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bmstu/prac/service/EcommerceOrderProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bmstu/prac/service/FileReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bmstu/prac/service/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bmstu/prac/service/RestaurantOrderProcessing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../english/Untitled 1.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../english/Untitled 1.odt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../english/dz.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../english/dz.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bmstu/prac/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bmstu/prac/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bmstu/prac/service/EcommerceOrderProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bmstu/prac/service/EcommerceOrderProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bmstu/prac/service/FileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bmstu/prac/service/FileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bmstu/prac/service/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bmstu/prac/service/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bmstu/prac/service/RestaurantOrderProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bmstu/prac/service/RestaurantOrderProcessing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../социология/Ли_РВ_ИУК_5_52_Б_2024_Социология_ДЗ.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../социология/Ли_РВ_ИУК_5_52_Б_2024_Социология_ДЗ.odt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../социология/Ли_РВ_ИУК_5_52_Б_2024_Социология_ДЗ.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../социология/Ли_РВ_ИУК_5_52_Б_2024_Социология_ДЗ.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../экология/Ли_РВ_ИУК_5_52_Б_2024_Экология_ДЗ.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../экология/Ли_РВ_ИУК_5_52_Б_2024_Экология_ДЗ.odt" afterDir="false" />
@@ -45,9 +31,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2p2Es8TBhgmmdVvmCwhEwnW6J0e" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -58,13 +44,15 @@
     "Application.Main.executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   },
   "keyToStringList": {
     "HarpoonJumpList": [
-      "/home/roman/Documents/BMSTU/java/practice/prac3/src/main/java/bmstu/prac/Main.java"
+      "/home/roman/Documents/BMSTU/java/practice/prac3/src/main/java/bmstu/prac/Main.java",
+      "/home/roman/Documents/BMSTU/java/practice/prac3/src/main/java/bmstu/prac/service/Order.java"
     ]
   }
 }]]></component>

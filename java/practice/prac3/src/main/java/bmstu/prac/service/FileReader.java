@@ -32,6 +32,6 @@ public class FileReader implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new SimpleEntry<>(0.0, 0); // Return 0 if something fails
+        return new SimpleEntry<>(0.0, 0);
     }
 }

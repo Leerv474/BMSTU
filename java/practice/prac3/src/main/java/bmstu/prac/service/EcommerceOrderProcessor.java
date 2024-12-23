@@ -48,7 +48,6 @@ public class EcommerceOrderProcessor implements Callable<Integer> {
         }
     }
 
-    // Non-static main logic
     public void runApplication() throws InterruptedException, ExecutionException {
         Queue<String> orderQueue = new ConcurrentLinkedQueue<>();
         ReentrantLock lock = new ReentrantLock();
@@ -58,7 +57,6 @@ public class EcommerceOrderProcessor implements Callable<Integer> {
         ExecutorService executorService = Executors.newFixedThreadPool(5);
         ExecutorService orderProducer = Executors.newSingleThreadExecutor();
 
-        // Producer to add orders to the queue
         orderProducer.submit(() -> {
             for (int i = 1; i <= totalOrders; i++) {
                 String order = "Order #" + i;
@@ -77,20 +75,17 @@ public class EcommerceOrderProcessor implements Callable<Integer> {
             }
         });
 
-        // Start consumers
         List<Future<Integer>> futures = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
             futures.add(executorService.submit(
                     new EcommerceOrderProcessor(orderQueue, lock, processedOrders, totalOrders)));
         }
 
-        // Shutdown executors
         orderProducer.shutdown();
         executorService.shutdown();
         orderProducer.awaitTermination(10, TimeUnit.SECONDS);
         executorService.awaitTermination(10, TimeUnit.SECONDS);
 
-        // Collect results
         int totalProcessed = 0;
         for (Future<Integer> future : futures) {
             totalProcessed += future.get();

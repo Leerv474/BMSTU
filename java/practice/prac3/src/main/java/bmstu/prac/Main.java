@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutionException;
 
 public class Main {
     public static void main(String[] args) {
-        task1();
+        task2();
     }
 
     public static void task1() {
@@ -47,7 +47,7 @@ public class Main {
         }
     }
 
-    public static void task2() {
+    public static void task3() {
 
         Order order1 = new Order("Burger", 300, 2000);
         Order order2 = new Order("Pizza", 700, 1500);
@@ -59,7 +59,7 @@ public class Main {
         restaurantOrderProcessing.processOrder(order3);
     }
 
-    public static void task3() {
+    public static void task2() {
         EcommerceOrderProcessor app = new EcommerceOrderProcessor(null, null, null, 0);
         try {
             app.runApplication();

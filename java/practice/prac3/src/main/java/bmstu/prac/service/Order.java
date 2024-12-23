@@ -1,8 +1,13 @@
 package bmstu.prac.service;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Order {
     private final String dishName;
-    private final int preparationTime; // в миллисекундах
+    private final int preparationTime;
     private final double price;
     private double finalPrice;
 
@@ -12,23 +17,4 @@ public class Order {
         this.price = price;
     }
 
-    public String getDishName() {
-        return dishName;
-    }
-
-    public int getPreparationTime() {
-        return preparationTime;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public double getFinalPrice() {
-        return finalPrice;
-    }
-
-    public void setFinalPrice(double finalPrice) {
-        this.finalPrice = finalPrice;
-    }
 }
