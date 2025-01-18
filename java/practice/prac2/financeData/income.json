@@ -1,9 +1,0 @@
-[ {
-  "recordDate" : "2024-09-26",
-  "transactionSum" : 123.0,
-  "transactionType" : "Доход"
-}, {
-  "recordDate" : "2024-10-08",
-  "transactionSum" : 1234.0,
-  "transactionType" : null
-} ]
