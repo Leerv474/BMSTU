@@ -1,6 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
              android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="-38dp"
+        tools:layout_editor_absoluteY="-16dp">
+
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="100dp"
+            app:columnCount="3"
+            app:rowCount="3">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:height="40dp"
+                android:text="TEXT1"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_columnWeight="1" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:height="40dp"
+                android:text="TEXT2"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_columnWeight="1" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:height="40dp"
+                android:text="TEXT3"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_columnWeight="1" />
+
+        </androidx.gridlayout.widget.GridLayout>
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:height="50dp"
+                android:minHeight="50dp"
+                android:padding="5dp"
+                android:text="choose 1" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:height="50dp"
+                android:minHeight="50dp"
+                android:padding="5dp"
+                android:text="choose 2"
+                app:layout_columnWeight="1" />
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:height="50dp"
+                android:minHeight="50dp"
+                android:padding="5dp"
+                android:text="choose 3"
+                app:layout_columnWeight="1" />
+
+        </RadioGroup>
+
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_weight="0"
+            app:columnCount="2">
+
+            <Spinner
+                android:id="@+id/background_color_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:entries="@array/colors_array"
+                android:minHeight="50dp"
+                app:layout_column="1"
+                app:layout_columnWeight="1"
+                app:layout_row="1" />
+
+            <Spinner
+                android:id="@+id/font_size_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:entries="@array/font_size_array"
+                android:minHeight="50dp"
+                app:layout_column="1"
+                app:layout_columnWeight="1"
+                app:layout_row="0" />
+
+            <Spinner
+                android:id="@+id/font_color_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:entries="@array/colors_array"
+                android:minHeight="50dp"
+                app:layout_column="1"
+                app:layout_columnWeight="1"
+                app:layout_row="2" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:height="30dp"
+                android:text="font size"
+                app:layout_column="0"
+                app:layout_columnWeight="1"
+                app:layout_row="0" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:height="30dp"
+                android:text="font color"
+                app:layout_column="0"
+                app:layout_columnWeight="1"
+                app:layout_row="2" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:height="30dp"
+                android:text="background color"
+                app:layout_column="0"
+                app:layout_columnWeight="1"
+                app:layout_row="1" />
+
+        </androidx.gridlayout.widget.GridLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

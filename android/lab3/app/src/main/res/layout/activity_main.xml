@@ -1,7 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="103dp"
+        android:layout_margin="30dp"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:text="Hello World!"
+        android:textColor="#0F0C0C"
+        android:verticalScrollbarPosition="defaultPosition" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/textSizesGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <RadioButton
+                android:id="@+id/radioButton12"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:checked="true"
+                android:text="12pt" />
+
+            <RadioButton
+                android:id="@+id/radioButton14"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="14pt" />
+
+            <RadioButton
+                android:id="@+id/radioButton16"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="16pt" />
+
+            <RadioButton
+                android:id="@+id/radioButton18"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="18pt" />
+
+            <RadioButton
+                android:id="@+id/radioButton20"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="20pt" />
+
+            <RadioButton
+                android:id="@+id/radioButton24"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="24pt" />
+        </RadioGroup>
+
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_weight="1"
+            app:columnCount="4">
+
+            <ImageButton
+                android:id="@+id/blackButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@android:string/yes"
+                android:src="@color/black"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <ImageButton
+                android:id="@+id/whiteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/screen_background_light"
+                android:contentDescription="@android:string/yes"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <ImageButton
+                android:id="@+id/redButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:color/holo_red_dark"
+                android:contentDescription="@android:string/yes"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <ImageButton
+                android:id="@+id/blueButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:color/holo_blue_dark"
+                android:contentDescription="@android:string/yes"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <ImageButton
+                android:id="@+id/greenButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:color/holo_green_dark"
+                android:contentDescription="@android:string/yes"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <ImageButton
+                android:id="@+id/yellowButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:color/holo_orange_light"
+                android:contentDescription="@android:string/yes"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <ImageButton
+                android:id="@+id/purpleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@android:string/yes"
+                android:src="@color/purple_200"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <ImageButton
+                android:id="@+id/grayButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@android:string/yes"
+                android:src="#6E7487"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <ImageButton
+                android:id="@+id/orangeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:color/holo_orange_dark"
+                android:contentDescription="@android:string/yes"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <ImageButton
+                android:id="@+id/tealButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@android:string/yes"
+                android:src="@color/teal_200"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <ImageButton
+                android:id="@+id/pinkButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@android:string/yes"
+                android:src="#FAD3F7"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <ImageButton
+                android:id="@+id/magentaButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@android:string/yes"
+                android:src="@color/magenta"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <ImageButton
+                android:id="@+id/brownButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@android:string/yes"
+                android:src="@color/brown"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <ImageButton
+                android:id="@+id/lightYellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@android:string/yes"
+                android:src="@color/lgihtYellow"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <ImageButton
+                android:id="@+id/lightGreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@android:string/ok"
+                android:src="@android:color/holo_green_light"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <ImageButton
+                android:id="@+id/randomizeColorButton"
+                android:layout_width="20dp"
+                android:contentDescription="@android:string/yes"
+                android:layout_height="20dp"
+                android:src="@android:drawable/stat_notify_sync"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+        </androidx.gridlayout.widget.GridLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/alignLeft"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="align left" />
+
+        <Button
+            android:id="@+id/alignCenter"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="align center" />
+
+        <Button
+            android:id="@+id/alignRight"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="align right" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
 </LinearLayout>
