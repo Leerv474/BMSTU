@@ -1,3 +1,0 @@
-tonsdk
-ton
-pytonlib

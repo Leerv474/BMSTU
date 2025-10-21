@@ -1,0 +1,36 @@
+
+.container {
+  padding: "20px";
+  border-radius: "12px";
+  text-align: "center";
+  width: "250px";
+  margin: "40px auto";
+}
+
+.lightOn {
+  background-color: #fffbea;
+  color: #000;
+}
+
+.lightOff {
+  background-color: "#1a1a1a";
+  color: "#fff";
+}
+
+
+.button {
+  padding: "10px 20px";
+  border-radius: "8px";
+  border: "none";
+  cursor: "pointer";
+}
+
+.buttonOn {
+  background-color: "#ffcc00";
+  color: "#000";
+}
+
+.buttonOff {
+  background-color: "#444";
+  color: "#fff";
+}
