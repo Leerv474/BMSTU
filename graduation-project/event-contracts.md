@@ -39,12 +39,14 @@
 | Project   | `ProjectCreated`          | Activity               |
 | Project   | `ProjectUpdated`          | Activity               |
 | Project   | `ProjectDeleted`          | Activity               |
-| Task      | `TaskCreated`             | Notification, Activity |
-| Task      | `TaskUpdated`             | Notification, Activity |
+| Task      | `TaskCreated`             | Activity |
+| Task      | `TaskUpdated`             | Activity |
 | Task      | `TaskDeleted`             | Activity               |
-| Task      | `TaskStatusChanged`       | Notification           |
+| Task      | `TaskStatusChanged`       | Activity               |
 | Task      | `TaskDeadlineApproaching` | Notification           |
-| Task      | `TaskAssigned`            | Notification           |
+| Status    | `StatusCreated`           | Activity               |
+| Status    | `StatusUpdated`           | Activity               |
+| Status    | `StatusDeleted`           | Activity               |
 
 # Notification Service
 

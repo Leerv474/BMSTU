@@ -5,9 +5,9 @@
 | **User Service**             | Пользователи, роли, разрешения                      | `users_db`            |
 | **Auth Service**             | Аутентификация                                      | `auth_db`             |
 | **Activity Service**         | Логи действий пользователей и системные события     | `activity_db`         |
-| **Mailing Service**          | Управление отправкой писем                          | `email_db`            |
+| **Mailing Service**          | Управление отправкой писем                          | `messaging_db`        |
 | **Board Management Service** | Доски, проекты, задачи, таблицы статусов            | `board_management_db` |
-| **Notification Service**     | Уведомления по email/пуш, отслеживание сроков задач | `notifications_db`    |
+| **Notification Service**     | Уведомления по email/пуш, отслеживание сроков задач | `messaging_db`        |
 | **API Gateway**              | Маршрутизация запросов, обработка аутентификации    | —                     |
 
 ---

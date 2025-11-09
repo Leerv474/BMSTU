@@ -1,0 +1,33 @@
+{
+    "mnemonics": [
+        "require",
+        "laundry",
+        "phone",
+        "jump",
+        "project",
+        "tone",
+        "peasant",
+        "deliver",
+        "scatter",
+        "culture",
+        "dry",
+        "crunch",
+        "regular",
+        "crane",
+        "thank",
+        "oblige",
+        "friend",
+        "enroll",
+        "smile",
+        "domain",
+        "memory",
+        "cry",
+        "raven",
+        "moment"
+    ],
+    "public_key": "dfd18ba2c32710d4b682119c3f0de0e6b845402053d71204610613abfa745195",
+    "private_key": "0fd21a5506d81547bf8bf6087a1147e4bcd258853f1425b2de255ac2d8674bb5dfd18ba2c32710d4b682119c3f0de0e6b845402053d71204610613abfa745195",
+    "raw_address": "0:779fe55e8fbcd89e245877f30d58f263d8b32180879f256f839fc7ff00b60aee",
+    "user_friendly_address": "EQB3n-Vej7zYniRYd_MNWPJj2LMhgIefJW-Dn8f_ALYK7iIB",
+    "base64_boc": "te6cckECAwEAAQ8AAt+IAO8/yr0febE8SLDv5hqx5MexZkMBDz5K3wc/j/4BbBXcEYd9HomTURGxcXefpR7WlMa4OvPEEmjOG31tZKmp1lG0mWxMUwQmkJ+ilz6eTfOSqdvPfYvvM16wrwhocuRnMAGlNTRi/////+AAAAAQAQIA3v8AIN0gggFMl7ohggEznLqxn3Gw7UTQ0x/THzHXC//jBOCk8mCDCNcYINMf0x/TH/gjE7vyY+1E0NMf0x/T/9FRMrryoVFEuvKiBPkBVBBV+RDyo/gAkyDXSpbTB9QC+wDo0QGkyMsfyx/L/8ntVABQAAAAACmpoxff0YuiwycQ1LaCEZw/DeDmuEVAIFPXEgRhBhOr+nRRlRMDBLc="
+}

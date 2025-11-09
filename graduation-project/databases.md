@@ -4,7 +4,7 @@
 
 Сущности:
 
-- users (id, email, username, is_enabled, created_at, updated_at)
+- users (id, email, username, is_enabled, created_at, updated_at, created_by)
 - roles (id, name, description)
 
 Связи:
@@ -38,7 +38,7 @@
 - boards (id, name, created_at, updated_at, is_deleted, deleted_at)
 - statuses (id, name, completion_order, created_at, updated_at, is_deleted, deleted_at)
 - projects (id, title, description, deadline, created_at, updated_at, is_deleted, deleted_at)
-- tasks (id, title, description, deadline, completed_at, created_at, updated_at, is_deleted, deleted_at)
+- tasks (id, title, description, deadline, completed_at, created_at, updated_at, is_deleted, deleted_at, is_converted)
 
 Связи:
 

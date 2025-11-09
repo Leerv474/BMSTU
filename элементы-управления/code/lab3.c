@@ -18,8 +18,8 @@
 
 int main(void)
 {
-	DDRD = 0xFF;
-	PORTD = 0b00000001;
+	DDRB = 0b00000001;
+	PORTB = 0b00000001;
     /* Replace with your application code */
     while (1) 
     {
