@@ -29,7 +29,6 @@ def create_wallet_json(filename):
     print(f"✅ Wallet saved to {filename}")
     return data
 
-# Create and save two wallets
 wallet1_data = create_wallet_json("wallet1.json")
 wallet2_data = create_wallet_json("wallet2.json")
 

@@ -14,45 +14,45 @@ def load_wallet_from_json(filename):
     )
     return wallet, pub, priv
 
-wallet1, pub1, priv1 = load_wallet_from_json("wallet1.json")
+# wallet1, pub1, priv1 = load_wallet_from_json("wallet1.json")
 wallet2, pub2, priv2 = load_wallet_from_json("wallet2.json")
 
-print("Loaded wallet1:", wallet1.address.to_string(True, True, True))
+# print("Loaded wallet1:", wallet1.address.to_string(True, True, True))
 print("Loaded wallet2:", wallet2.address.to_string(True, True, True))
 
 from tonsdk.utils import bytes_to_b64str
 
-query = wallet1.create_init_external_message()
-boc_base64 = bytes_to_b64str(query["message"].to_boc(False))
+# query = wallet1.create_init_external_message()
+# boc_base64 = bytes_to_b64str(query["message"].to_boc(False))
 
 import requests
-resp = requests.post(
-    "https://testnet.toncenter.com/api/v2/sendBoc",
-    data={"boc": boc_base64}  # No API key needed for testnet, rate-limited
-)
-print(resp.json())
+# resp = requests.post(
+#     "https://testnet.toncenter.com/api/v2/sendBoc",
+#     json={"boc": boc_base64}  # No API key needed for testnet, rate-limited
+# )
+# print(resp.json())
 
 
 import time
 
-while True:
-    r = requests.get(
-        "https://testnet.toncenter.com/api/v2/getWalletInformation",
-        params={"address": wallet1.address.to_string(True, True, True)}
-    )
-    info = r.json()
-    if info["ok"] and info["result"]["account_state"] == "active":
-        print("Wallet deployed!")
-        break
-    time.sleep(2)
-
+# while True:
+#     r = requests.get(
+#         "https://testnet.toncenter.com/api/v2/getWalletInformation",
+#         params={"address": wallet1.address.to_string(True, True, True)}
+#     )
+#     info = r.json()
+#     if info["ok"] and info["result"]["account_state"] == "active":
+#         print("Wallet deployed!")
+#         break
+#     time.sleep(2)
+#
 
 query = wallet2.create_init_external_message()
 boc_base64 = bytes_to_b64str(query["message"].to_boc(False))
 
 resp = requests.post(
     "https://testnet.toncenter.com/api/v2/sendBoc",
-    data={"boc": boc_base64}  # No API key needed for testnet, rate-limited
+    json={"boc": boc_base64}  # No API key needed for testnet, rate-limited
 )
 print(resp.json())
 
