@@ -12,12 +12,6 @@ set.seed(2025)
 # ---------------------------
 # 1) Загрузка данных
 # ---------------------------
-# Вариант A: если у вас есть CSV с признаками и колонкой "class"
-# CSV должен содержать: columns of numeric predictors and a column 'class' with values 'pelit' or 'psamm'
-# data <- read.csv("your_data.csv", stringsAsFactors = FALSE)
-
-# Вариант B: демонстрационный синтетический датасет (для тестирования скрипта)
-# (Удалите или замените на загрузку реального файла)
 n <- 300
 # Признаки: grain_size, clay_content, silt_content, porosity, bulk_density, organic_matter
 pelit <- data.frame(
@@ -138,11 +132,15 @@ train_for_caret$class <- factor(train_for_caret$class, levels = c("pelit", "psam
 
 tuneGrid <- expand.grid(size = c(3,5,8,12))  # разные размеры
 set.seed(123)
-caret_mlp <- train(class ~ ., data = train_for_caret,
-                   method = "mlp",
-                   metric = "ROC",
-                   trControl = ctrl,
-                   tuneGrid = tuneGrid)
+caret_mlp <- caret::train(
+  class ~ .,
+  data = train_for_caret,
+  method = "mlp",
+  metric = "ROC",
+  trControl = ctrl,
+  tuneGrid = tuneGrid
+)
+
 
 cat("caret mlp tuning results:\n")
 print(caret_mlp)
@@ -166,7 +164,6 @@ roc_caret<- roc(response = ifelse(test_norm$class == "pelit", 1, 0), predictor =
 cat(sprintf("AUC (neuralnet) = %.3f\n", auc(roc_nn)))
 cat(sprintf("AUC (RSNNS Rprop) = %.3f\n", auc(roc_rsnns)))
 cat(sprintf("AUC (caret mlp) = %.3f\n", auc(roc_caret)))
-
 # ----------------------------------------------------
 # 10) ROC-кривые для трех моделей на одном графике
 # ----------------------------------------------------
@@ -196,7 +193,7 @@ plot(
   test_norm$clay_content,
   col = ifelse(test_norm$class == "pelit", "darkgreen", "red"),
   pch = ifelse(rsnns_pred_class == test_norm$class, 16, 4),
-  main = "Проверка классификации на 2 признаках (RSNNS Rprop)",
+  main = "Классификация по двум признакам (RSNNS Rprop)",
   xlab = "grain_size (норм.)",
   ylab = "clay_content (норм.)"
 )
