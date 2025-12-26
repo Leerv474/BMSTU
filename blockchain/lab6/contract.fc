@@ -1,3 +1,5 @@
+#include "stdlib.fc";
+
 () recv_internal(int msg_value, cell in_msg, slice in_msg_body) impure {
     if (msg_value < 160000000) {
         return ();
@@ -8,13 +10,14 @@
     slice sender_address = cs~load_msg_addr();
 
     cell reply_msg = begin_cell()
-        .store_uint(0x18, 6)                      
-        .store_slice(sender_address)             
-        .store_coins(50000000)                  
-        .store_uint(0, 107)                    
-        .store_uint(0, 32)                    
+        .store_uint(0x18, 6)
+        .store_slice(sender_address)
+        .store_coins(50000000)
+        .store_uint(0, 107)
+        .store_uint(0, 32)
         .store_slice("Roman Lee IUK5-72B")
         .end_cell();
 
     send_raw_message(reply_msg, 3);
 }
+

@@ -1,0 +1,10 @@
+"build/contract.cell" file>B
+"empty.boc" file>B
+cell+ constant state_init
+
+state_init hash
+."Contract address: " type cr
+
+state_init
+boc+>B "state_init.boc" B>file
+
