@@ -1,0 +1,18 @@
+cell main() {
+    var b = begin_cell();
+    ;; Store owner address (256-bit)
+    b.store_uint(0xYOUR_WALLET_ADDRESS_HEX, 256);
+
+    ;; Create a child cell for metadata URI
+    var content_cell = begin_cell();
+
+    ;; Convert string to bytes
+    var uri_bytes = "https://raw.githubusercontent.com/Leerv474/BMSTU/refs/heads/master/blockchain/lab4/metadata.json".bytes();
+    content_cell.store_bytes(uri_bytes, uri_bytes.len());
+
+    var content = content_cell.end_cell();
+    b.store_ref(content);
+
+    return b.end_cell();
+}
+

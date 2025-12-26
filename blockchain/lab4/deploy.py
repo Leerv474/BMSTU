@@ -63,10 +63,10 @@ def create_collection():
     collection = NFTCollection(
         royalty_base=royalty_base,
         royalty_factor=royalty_factor,
-        royalty_address=Address(wallet_address),  # Или другой адрес для роялти
+        royalty_address=Address(wallet_address),
         owner_address=Address(wallet_address),
         collection_content_uri='https://s.getgems.io/nft/b/c/62fba50217c3fe3cbaad9e7f/meta.json',
-        nft_item_content_base_uri='https://s.getgems.io/nft/b/c/62fba50217c3fe3cbaad9e7f/',
+        nft_item_content_base_uri='https://raw.githubusercontent.com/Leerv474/BMSTU/refs/heads/master/blockchain/lab4/metadata.json',
         nft_item_code_hex=nft_item_code_hex
     )
     return collection
@@ -92,7 +92,7 @@ async def deploy_collection(collection):
     await client.raw_send_message(query['message'].to_boc(False))
     print(f"Адрес коллекции: {collection.address.to_string(True, True, True)}")
 
-async def create_mint(collection, item_content_uri):
+async def create_mint(collection):
     from pathlib import Path
 
     payload_boc = Path("nft-mint.boc").read_bytes()
@@ -101,7 +101,7 @@ async def create_mint(collection, item_content_uri):
 
     msg = wallet.create_transfer_message(
         to_addr=collection.address.to_string(),
-        amount=to_nano(0.01, 'ton'),  # gas for mint
+        amount=to_nano(0.01, 'ton'),
         seqno=seqno,
         payload=payload_boc
     )
@@ -112,4 +112,4 @@ async def create_mint(collection, item_content_uri):
 if __name__ == '__main__':
     collection = create_collection()
     asyncio.run(deploy_collection(collection))
-    asyncio.run(create_mint(collection, item_content_uri))
+    asyncio.run(create_mint(collection))
