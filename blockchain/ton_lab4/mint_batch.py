@@ -20,7 +20,7 @@ def api_post(method: str, json_body: dict):
     return data["result"]
 
 
-def batch_mint(start_index: int = 3, count: int = 5, owner_addr: str = ""):
+def batch_mint(start_index: int = 3, count: int = 5, owner_addr: str = None):
     """
     Минтим несколько NFT ОДНОЙ транзакцией.
     start_index – с какого индекса начинать (0,1,2 уже заняты).

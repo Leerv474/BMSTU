@@ -54,7 +54,6 @@ async def transfer_nft_pytonlib():
     """
     # тело сообщения для контракта NFT: "передай владение на DEST_ADDRESS"
     body = NFTItem().create_transfer_body(
-        response_address=Address(NFT_ADDRESS),
         new_owner_address=Address(DEST_ADDRESS)
     )
 
@@ -77,6 +76,10 @@ async def transfer_nft_pytonlib():
 if __name__ == "__main__":
 
     async def main():
+        # сначала запускаем высокий уровень (TonTools):
         await transfer_nft_tontools()
+
+        # потом (если хочешь) можешь отдельно протестировать низкий уровень:
+        # await transfer_nft_pytonlib()
 
     asyncio.run(main())

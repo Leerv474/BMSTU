@@ -1,17 +1,27 @@
+;; mint.fc - Hardcoded NFT mint payload
 cell main() {
-    var b = begin_cell();
-    ;; Store owner address (256-bit)
-    b.store_uint(0xYOUR_WALLET_ADDRESS_HEX, 256);
+    ;; Root builder
+    builder b = begin_cell();
 
-    ;; Create a child cell for metadata URI
-    var content_cell = begin_cell();
+    ;; Hardcoded owner address (256-bit)
+    b.store_uint(0x54236eb85719fe32d458ae1ed19594c990a8f9f01efb9226dcbe8ca88e9b2424, 256);
 
-    ;; Convert string to bytes
-    var uri_bytes = "https://raw.githubusercontent.com/Leerv474/BMSTU/refs/heads/master/blockchain/lab4/metadata.json".bytes();
-    content_cell.store_bytes(uri_bytes, uri_bytes.len());
+    ;; Operation code for mint (1)
+    b.store_uint(1, 32);
 
-    var content = content_cell.end_cell();
-    b.store_ref(content);
+    ;; Query ID
+    b.store_uint(1, 64);
+
+    ;; Build content/URI cell
+    builder uri_builder = begin_cell();
+    uri_builder.store_uint(0x68747470733a2f2f, 64); ;; "https://"
+    uri_builder.store_uint(0x74696e7975726c2e, 64); ;; "tinyurl."
+    uri_builder.store_uint(0x636f6d2f37666a61, 64); ;; "com/7fja"
+    uri_builder.store_uint(0x6e376373, 32);        ;; "n7cs"
+    cell content_cell = uri_builder.end_cell();
+
+    ;; Store content reference
+    b.store_ref(content_cell);
 
     return b.end_cell();
 }

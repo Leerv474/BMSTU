@@ -27,7 +27,7 @@ def mint_one(index: int, owner_addr: str):
     collection: NFTCollection = create_collection_mint()
     owner = Address(owner_addr)
 
-    item_uri = f"{3}/meta.json"
+    item_uri = f"{index + 1}/meta.json"
 
     body = collection.create_mint_body(
         item_index=index,

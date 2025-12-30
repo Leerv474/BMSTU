@@ -1,0 +1,1 @@
+MNEMONICS_ADMIN = [ "mesh", "witness", "sketch", "pave", "recipe", "exhaust", "put", "round", "bird", "coil", "round", "entry", "loan", "tag", "ripple", "scrub", "olympic", "orchard", "afford", "maximum", "muscle", "gesture", "volcano", "comic" ]

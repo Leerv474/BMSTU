@@ -1,0 +1,53 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editors/IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs & env
+*.log
+.env
+.env.*
+*.pem
+*.key
+
+# Node
+node_modules/
+dist/
+build/
+.next/
+.nuxt/
+.pnpm-store/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.mypy_cache/
+.pytest_cache/
+coverage/
+
+# Swift / iOS
+DerivedData/
+build/
+Pods/
+.xcworkspace/
+.xcodeproj/*
+!.xcodeproj/project.pbxproj
+!.xcodeproj/xcshareddata
+
+# Java / Kotlin
+target/
+.gradle/
+
+# Go / Rust / PHP
+bin/
+vendor/
+target/

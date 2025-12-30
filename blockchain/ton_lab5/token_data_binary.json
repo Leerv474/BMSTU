@@ -1,8 +1,0 @@
-{
-  "name": "Test Token Binary",
-  "description": "Жетон с изображением в условно двоичном виде (raw).",
-  "image_data": "BINARY_IN_FILE_image.raw",
-  "symbol": "TSTB",
-  "amount_style": "n",
-  "render_type": "currency"
-}

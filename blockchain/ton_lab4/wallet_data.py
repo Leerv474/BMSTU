@@ -1,17 +1,18 @@
 from tonsdk.contract.wallet import Wallets, WalletVersionEnum
-import json
 
-def load_wallet_from_json(filename):
-    with open(filename) as f:
-        data = json.load(f)
-    mnemonics = data["mnemonics"]
-    _, _, _, wallet = Wallets.from_mnemonics(
-        mnemonics, WalletVersionEnum.v3r2, 0
-    )
-    return wallet, mnemonics
+#  МНЕМОНИКУ ИЗ ЛАБЫ 2 (ТЕСТНЕТ-кошелёк)
+mnemonics = [
+    'prosper', 'calm', 'column', 'silk', 'absent', 'sea', 'cause', 'library', 'region', 'slim', 'area', 'winter', 'guitar', 'icon', 'all', 'giant', 'spike', 'fruit', 'visit', 'dash', 'burger', 'install', 'balance', 'shoulder']
 
-wallet, mnemonics = load_wallet_from_json("wallet.json")
-wallet_address = wallet.address.to_string(True, True, True)
+
+
+mn, public_key, private_key, wallet = Wallets.from_mnemonics(
+    mnemonics=mnemonics,
+    version=WalletVersionEnum.v3r2,
+    workchain=0
+)
+
+wallet_address = wallet.address.to_string(True, True, True, True)
 
 if __name__ == "__main__":
     print("Адрес кошелька:", wallet_address)
