@@ -31,7 +31,7 @@ async def get_client():
     config = requests.get(url).json()
     keystore_dir = '/tmp/ton_keystore'
     Path(keystore_dir).mkdir(parents=True, exist_ok=True)
-    client = TonlibClient(ls_index=4, config=config, keystore=keystore_dir, tonlib_timeout=60)
+    client = TonlibClient(ls_index=3, config=config, keystore=keystore_dir, tonlib_timeout=60)
     await client.init()
     return client
 
@@ -51,7 +51,7 @@ async def get_seqno_with_retry(client, address, retries=3):
 
 def create_collection():
     royalty_base = 1000
-    royalty_factor = 55
+    royalty_factor = 53
 
     from pathlib import Path
 
@@ -90,22 +90,6 @@ async def deploy_collection(client, collection):
     print(data)
     await client.raw_send_message(query['message'].to_boc(False))
     print(f"Адрес коллекции: {collection.address.to_string(True, True, True)}")
-
-async def create_mint(client, collection):
-    from pathlib import Path
-
-    payload_boc = Path("mint.boc").read_bytes()
-    seqno = await get_seqno_with_retry(client, wallet_address, 10)
-
-    msg = wallet.create_transfer_message(
-        to_addr=collection.address.to_string(),
-        amount=to_nano(0.1, 'ton'),
-        seqno=seqno,
-        payload=payload_boc
-    )
-
-    await client.raw_send_message(msg['message'].to_boc(False))
-
 
 import base64
 import requests
@@ -150,13 +134,13 @@ def api_post(method: str, json_body: dict, retries=5, delay=2):
 async def mint_one(client, collection):
     res = api_post("runGetMethod", {
         "address": collection.address.to_string(),
-        "method": "get_netx_item_index",
+        "method": "get_nft_items_count",
         "stack": []
     })
     last_index = int(res["stack"][0][1], 16)
-    next_index = last_index#+1  # next available index
+    next_index = last_index+1
 
-    item_uri = f"https://a.com/1.json"
+    item_uri = f"https://raw.githubusercontent.com/Leerv474/BMSTU/refs/heads/master/blockchain/lab4/metadata.json"
 
     # Create mint payload
     body = collection.create_mint_body(
