@@ -1,0 +1,29 @@
+[
+    {
+        "cpu_manufacturer": "Intel",
+        "cpu_model": "i5-9400f",
+        "gpu_model": "RTX 2060",
+        "ram_gb": 16,
+        "storage_gb": 256,
+        "storage_type": "SSD",
+        "power_supply_w": 650
+    },
+    {
+        "cpu_manufacturer": "Intel",
+        "cpu_model": "i5-12400f",
+        "gpu_model": "RTX 3060 TI",
+        "ram_gb": 16,
+        "storage_gb": 256,
+        "storage_type": "SSD",
+        "power_supply_w": 650
+    },
+    {
+        "cpu_manufacturer": "AMD",
+        "cpu_model": "ryzen 5 5700x",
+        "gpu_model": "RTX 4060 TI",
+        "ram_gb": 16,
+        "storage_gb": 256,
+        "storage_type": "SSD",
+        "power_supply_w": 650
+    }
+]
