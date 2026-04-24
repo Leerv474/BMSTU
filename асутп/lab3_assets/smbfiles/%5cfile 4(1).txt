@@ -1,0 +1,1 @@
+flag{smb_tr4nsfer_sn1ff}
